@@ -1,0 +1,8 @@
+.vagrant
+/lib
+/log
+/bin
+tmp
+*.pyc
+*~
+#*
