@@ -1,9 +1,11 @@
-// Headings
-$header-font-weight: $bold;
-
 .main {
   h1 {
-    color: red;
+    font: $header-font;
     text-align: center;
+    color: $text-color;
   }
+}
+
+body {
+  background-color: $background-color;
 }

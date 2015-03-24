@@ -1,15 +1,13 @@
-// Font weights
-$light: 100;
-$regular: 400;
-$bold: 600;
+// Font sizes
+$font-header:40px;
+$font-xxlarge:28px;
+$font-xlarge:24px;
+$font-large: 20px;
+$font-medium: 16px;
+$font-small: 12px;
 
-// Base Font
-$base-font-family: sans-serif;
-$base-font-weight: $regular;
-$base-font-size: 13px;
-$base-line-height: 1.4;
+// Font types
+$header-font-stack: 'Vollkorn', sans-serif;
 
-// Fixed Font
-$fixed-font-family: monospace;
-$fixed-font-size: 85%;
-$fixed-line-height: $base-line-height;
+// Define some fonts for the page.
+$header-font: $font-header $header-font-stack;

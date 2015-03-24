@@ -1,5 +1,9 @@
 .main h1 {
-  color: red;
-  text-align: center; }
+  font: 40px 'Vollkorn', sans-serif;
+  text-align: center;
+  color: #b5bec6; }
+
+body {
+  background-color: #1b4965; }
 .navbar h1 {
-  color: blue; }
+  font: 40px 'Vollkorn', sans-serif; }

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask.ext.assets import Environment, Bundle
 
 app = Flask(__name__)
@@ -23,3 +23,7 @@ assets.register('js_main', js)
 @app.route("/")
 def home():
   return render_template("index.html")
+
+@app.route("/resume")
+def resume():
+  return send_from_directory(app.config['BASE_DIR'], "app/static/resume.pdf")
