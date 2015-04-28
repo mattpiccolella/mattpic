@@ -8,6 +8,9 @@ app.config.from_object('config.app_config')
 from blog.controllers import blog as blog_module
 app.register_blueprint(blog_module)
 
+from frisk.controllers import frisk as frisk_module
+app.register_blueprint(frisk_module)
+
 # Prepare our assets
 assets = Environment(app)
 assets.url = app.static_url_path
