@@ -1,5 +1,5 @@
 // Constants
-var DEFAULT_LABEL = 'days';
+var DEFAULT_LABEL = 'gender';
 var STATIC_LABEL = "/static/data/"
 
 // Global variables

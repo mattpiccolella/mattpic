@@ -1,5 +1,6 @@
 #wrapper svg {
  width: auto;
+ padding-bottom: 10px;
 }
 
 #precinct-map {
@@ -316,3 +317,48 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     }
 }
 
+.label {
+  font: 10px sans-serif;
+}
+
+.tooltip {
+  font: 16px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.switch.button {
+  height: 2.3125rem;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+.switch.button p {
+  margin-bottom: 0;
+  font-size: 0.875em;
+  padding: 0.6em;
+}
+.switch.button.active {
+  background-color: #d0d0d0;
+  cursor: default;
+}

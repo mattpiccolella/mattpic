@@ -46,21 +46,25 @@ function addAxes() {
   var xAxis = getXAxis();
   var yAxis = getYAxis();
   canvas.append('g')
-    .attr("transform", "translate(290,0)")
+    .attr("transform", "translate(260,0)")
     .attr('id','yaxis')
-    .call(yAxis);
+    .call(yAxis)
+    .selectAll("text")
+      .attr("class", "label");
 
   canvas.append('g')
-    .attr("transform", "translate(290,480)")
+    .attr("transform", "translate(260,480)")
     .attr('id','xaxis')
-    .call(xAxis);
+    .call(xAxis)
+    .selectAll("text")
+      .attr("class", "label");
 }
 
 function addBars() {
   var xScale = getXScale();
   var yScale = getYScale();
   chart = canvas.append('g')
-            .attr("transform", "translate(210,0)")
+            .attr("transform", "translate(200,0)")
             .attr('id','bars')
             .selectAll('rect')
             .data(values)
@@ -68,7 +72,7 @@ function addBars() {
             .append('rect')
             .attr('class','rect-bar')
             .attr('height',19)
-            .attr({'x':80,'y':function(d,i){ return yScale(i) + 15; }})
+            .attr({'x':60,'y':function(d,i){ return yScale(i) + 15; }})
             .style('fill',function(d,i){ return colors(i); })
             .attr('width',function(d){ return 0; })
             .on("mouseover", function(d,i){

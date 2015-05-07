@@ -19,6 +19,7 @@ var projection = d3.geo.mercator()
 var precinctData;
 var precincts;
 var stopData;
+var points;
 
 function getColorSizeScale() {
   var keys = Object.keys(stopData);
