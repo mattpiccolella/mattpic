@@ -10,3 +10,4 @@ tmp
 app/static/.*
 *.map
 .sass-cache/*
+*.DS_Store

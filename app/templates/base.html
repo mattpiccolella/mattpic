@@ -1,18 +1,17 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
   <head>
     {% block head %}
     {% block meta %}
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="description" content="Matt Piccolella is a student at Columbia University. He is interested in building awesome applications." />
     <meta name="author" content="Matt Piccolella">
     {% endblock %}
     <!-- Add all CSS -->
     {% block css %}
-    {% assets "scss_main" %}
-    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
-    {% endassets %}
+    <link href="/static/css/main.css" rel="stylesheet" media="screen,projection"/>
     {% endblock css %}
     <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
     <!-- Google Analytics Tracking-->
@@ -30,10 +29,9 @@
     {% block body %}
     {% endblock body %}
     {% block js %}
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    {% assets "js_main" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/static/js/materialize.js"></script>
+    <script src="/static/js/init.js"></script>
     {% endblock %}
   </body>
 </html>
