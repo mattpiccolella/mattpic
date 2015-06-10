@@ -9,3 +9,4 @@ tmp
 .git/
 app/static/.*
 *.map
+.sass-cache/*
