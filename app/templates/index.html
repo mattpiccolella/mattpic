@@ -5,13 +5,37 @@ Matt Pic
 {% endblock %}
 
 {% block body %}
+<nav>
+    <div class="nav-wrapper nav_background">
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a>Code</a></li>
+        <li><a>Writing</a></li>
+        <li><a>Tech Talks</a></li>
+        <li><a>Projects</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a>Code</a></li>
+        <li><a>Writing</a></li>
+        <li><a>Tech Talks</a></li>
+        <li><a>Projects</a></li>
+      </ul>
+    </div>
+</nav>
 <div class="section no-pad-bot page_background" id="index-banner">
   <div class="container">
     <br><br>
     <h1 class="header center teal-text">Matt Piccolella</h1>
     <div class="row center">
-      <h5 class="header col s12 light">Full-Stack Developer, CS@Columbia, Aspiring Entrepreneur</h5>
+      <h5 class="header col s12 light white-text">Full-Stack Developer, CS@Columbia, Aspiring Entrepreneur</h5>
     </div>
+    <ul class="soc">
+      <li><a class="soc-twitter" href="https://twitter.com/matthew_pic" target="_blank"></a></li>
+      <li><a class="soc-facebook" href="https://www.facebook.com/matthew.piccolella" target="_blank"></a></li>
+      <li><a class="soc-github" href="https://github.com/mjp2220" target="_blank"></a></li>
+      <li><a class="soc-linkedin" href="https://www.linkedin.com/in/mattpiccolella" target="_blank"></a></li>
+      <li><a class="soc-email1 soc-icon-last" href="mailto:mjp2220@columbia.edu" target="_blank"></a></li>
+    </ul>
     <br><br>
   </div>
 </div>
