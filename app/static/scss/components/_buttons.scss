@@ -3,11 +3,8 @@
   border: none;
   border-radius: 2px;
   display: inline-block;
-  height: $button-height;
-  line-height: $button-line-height;
-  // margin-bottom: 15px;
   outline: 0;
-  padding: 0 2rem;
+  padding: 0 0.5rem;
   text-transform: uppercase;
   vertical-align: middle;
   // Gets rid of tap active state
@@ -43,6 +40,7 @@
   background-color: $button-color;
   text-align: center;
   letter-spacing: .5px;
+  margin: 5px 5px 5px 0px;
   @extend .z-depth-1;
   @include transition(.2s ease-out);
   cursor: pointer;

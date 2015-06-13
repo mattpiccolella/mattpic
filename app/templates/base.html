@@ -26,6 +26,23 @@
     {% endblock head %}
   </head>
   <body>
+    <nav>
+      <div class="nav-wrapper nav_background">
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a>Code</a></li>
+          <li><a>Writing</a></li>
+          <li><a>Tech Talks</a></li>
+          <li><a>Projects</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a>Code</a></li>
+          <li><a>Writing</a></li>
+          <li><a>Tech Talks</a></li>
+          <li><a>Projects</a></li>
+        </ul>
+      </div>
+    </nav>
     {% block body %}
     {% endblock body %}
     {% block js %}

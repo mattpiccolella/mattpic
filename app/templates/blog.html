@@ -1,5 +1,24 @@
-{% for post in posts %}
-  <a href="/blog/{{ post.path }}">
-  {{ post.title }}</a>
-  <small>{{ post.date }}</small>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block title %}
+Matt Pic | Blog
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <ul class="collection">
+  {% for post in posts %}
+    <li class="collection-item avatar">
+      <i class="mdi-editor-mode-comment circle"></i>
+      <span class="title"><a href="/blog/{{ post.path }}">{{ post.title }}</a></span>
+      <p>{{ post.subtitle }}</p>
+      <p>{{ post.date }}</p>
+      {% if post.tag %}
+        <a class="btn" href="/blog/tagged/{{post.tag}}">{{post.tag}}</a>
+      {% endif %}
+    </li>
+  </div>
+  {% endfor %}
+  </ul class="collection">
+</div>
+{% endblock %}

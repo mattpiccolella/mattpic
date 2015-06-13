@@ -8,7 +8,7 @@ blog = Blueprint('blog', __name__, url_prefix='/blog')
 flatpages = FlatPages(app)
 
 
-@blog.route("/")
+@blog.route('/')
 def list():
   posts = [p for p in flatpages]
   posts.sort(key=lambda item:item['date'], reverse=False)
@@ -18,3 +18,9 @@ def list():
 def post(name):
   post = flatpages.get_or_404(name)
   return render_template('blog_post.html', post=post)
+
+@blog.route('/tagged/<tag>')
+def tagged(tag):
+  posts = [p for p in flatpages if p['tag'] == tag]
+  posts.sort(key=lambda item:item['date'], reverse=False)
+  return render_template('blog.html', posts=posts)
