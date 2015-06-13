@@ -1,0 +1,5 @@
+{% for post in posts %}
+  <a href="/blog/{{ post.path }}">
+  {{ post.title }}</a>
+  <small>{{ post.date }}</small>
+{% endfor %}

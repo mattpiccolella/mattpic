@@ -2,6 +2,7 @@ Cheetah==2.4.4
 Flask==0.10.1
 Flask-Assets==0.10
 Flask-FlatPages==0.6
+Flask-Misaka==0.3.0
 Frozen-Flask==0.11
 Jinja2==2.7.3
 Landscape-Client==14.12
@@ -32,6 +33,7 @@ keyring==3.5
 launchpadlib==1.10.2
 lazr.restfulclient==0.13.3
 lazr.uri==1.0.3
+misaka==1.0.2
 oauth==1.0.1
 pathlib==1.0.1
 prettytable==0.7.2
