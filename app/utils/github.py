@@ -1,5 +1,6 @@
 from flask import jsonify
 import requests, json
+import random
 
 ROOT_ENDPOINT = "https://api.github.com"
 REPOS = "repos"
@@ -10,15 +11,15 @@ LANGUAGES = "languages"
 def github_language_data():
   repo_names = [repo['name'] for repo in fetch_repos()]
   languages = [fetch_languages(name) for name in repo_names]
-
   language_data = {}
-  for name, langages in zip(repo_names,languages):
-    for language, count in languages:
-      if not language in language_data:
-        language_data[language] = {}
-        language_data[language]['total'] = 0
-      language_data[langage][name] = count
-      language_data[language]['total'] += count  
+  for name, language in zip(repo_names,languages):
+    for lang in language:
+      count = language[lang]
+      if not lang in language_data:
+        language_data[lang] = {}
+        language_data[lang]['total'] = 0
+      language_data[lang][name] = count
+      language_data[lang]['total'] += count
   with open('languages.json', 'w') as output:
     json.dump(language_data,output)
 
