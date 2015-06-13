@@ -5,6 +5,8 @@ DEBUG = True
 import os
 BASE_DIR = os.path.abspath(os.getcwd())
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, "app/templates")
+
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'blog/content'

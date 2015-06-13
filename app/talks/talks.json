@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "title" : "Building (Useless) Chrome Extensions",
+      "subtitle" : "Inspired by Cloud-to-Butt, I wrote this talk to teach people how to make (useless) chrome extensions. These extensions involve photo replacement, text obfuscation, and link transformation.",
+      "date" : "4/29/2015",
+      "name" : "chrome-extensions"
+    },
+    {
+      "title" : "Building iOS Apps with JavaScript and React Native",
+      "subtitle" : "React Native is a framework that allows you to build native mobile applications using JavaScript. I walk you through the key concepts by creating a simple search application.",
+      "date" : "4/14/2015",
+      "name" : "react-native"
+    },
+    {
+      "title" : "ADI: Candidate for the Zvi Galil Award",
+      "subtitle" : "A presentation I wrote for ADI's application for the Zvi Galil Award (Engineering Student Group of the Year) at Columbia University. ADI ended up winning the award.",
+      "date" : "4/1/2015",
+      "path" : "adi-award"
+    },
+    {
+      "title" : "Leveling Up Your Apps with jQuery",
+      "subtitle" : "jQuery is one of the most widely-used JavaScript libraries. This talk teaches you how to utilize its features to make your websites interactive.",
+      "date" : "2/18/2015",
+      "name" : "jquery"
+    },
+    {
+      "title" : "Making Your Website Pop",
+      "subtitle" : "Bootstrap is a useful CSS framework that makes styling web pages easy. Learn how to apply it. This talk was given as a part of ADI's high school teaching program.",
+      "date" : "11/21/2014",
+      "path" : "http://slides.com/mattpiccolella/making-your-website-pop"
+    },
+    {
+      "title" : "How to Build a Website",
+      "subtitle" : "Learn how web pages are created in this talk. It teaches the basics of HTML and CSS. This talk was given as a part of ADI's high school teaching program.",
+      "date" : "11/14/2014",
+      "path" : "http://slides.com/mattpiccolella/how-to-build-a-website" 
+    },
+    {
+      "title" : "Diving into iOS Development",
+      "subtitle" : "Build your first iOS application! This talk covers the basics concepts of iOS development while walking you through the creation of a simple quiz game.",
+      "date" : "11/12/2014",
+      "path" : "http://slides.com/mattpiccolella/diving-into-ios-development"
+    },
+    {
+      "title" : "Building Web Apps with Django",
+      "subtitle" : "This talk walks you through the basics of Django, one of my favorite web development frameworks. It walks through the main concepts, including MVC, templating, and URL schemes.",
+      "date" : "2/26/2014",
+      "name" : "django"
+    },
+    {
+      "title" : "An Introduction to Python",
+      "subtitle" : "Never programmed before and want to learn? Python is a great starting point! Learn the basics of Python programming while completing simple tasks in this talk.",
+      "date" : "1/25/2014",
+      "name" : "python"
+    }
+  ]
+}

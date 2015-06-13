@@ -1,0 +1,904 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><style>/* to allow side-by-side code blocks */
+.join {
+  height: 0;
+  margin: 0;
+}
+.join + pre {
+  width: 45%;
+  float:left;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+pre + pre {
+  display: inline-block;
+  width: 45%;
+  float: right;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+pre + .clear {
+  margin: 0;
+  height: 0;
+  clear: both;
+}
+ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Fork me on Github*/
+img.github {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+/* headers and top links*/
+
+#top {
+  position: absolute;
+  top:0;
+}
+
+.top {
+  float:right;
+  padding-top: 20px;
+}
+
+/* "Responsive" */
+body {
+  width: 90%;
+  max-width: 50em;
+}
+
+/* make tables pretty */
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      border-bottom-width: 3px;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+/* Responsive Youtube video */
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.subscribeWrapper {
+  padding-left: 1rem;
+  float:right;
+}
+
+@media screen and (max-width: 768px) {
+  .subscribeWrapper {
+    float: none;
+    padding: 0;
+    display: block;
+  }
+}</style><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id,
+pre .coffeescript .params,
+pre .scss .preprocessor {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}</style><script>var hljs=new function(){function l(o){return o.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function b(p){for(var o=p.firstChild;o;o=o.nextSibling){if(o.nodeName=="CODE"){return o}if(!(o.nodeType==3&&o.nodeValue.match(/\s+/))){break}}}function h(p,o){return Array.prototype.map.call(p.childNodes,function(q){if(q.nodeType==3){return o?q.nodeValue.replace(/\n/g,""):q.nodeValue}if(q.nodeName=="BR"){return"\n"}return h(q,o)}).join("")}function a(q){var p=(q.className+" "+q.parentNode.className).split(/\s+/);p=p.map(function(r){return r.replace(/^language-/,"")});for(var o=0;o<p.length;o++){if(e[p[o]]||p[o]=="no-highlight"){return p[o]}}}function c(q){var o=[];(function p(r,s){for(var t=r.firstChild;t;t=t.nextSibling){if(t.nodeType==3){s+=t.nodeValue.length}else{if(t.nodeName=="BR"){s+=1}else{if(t.nodeType==1){o.push({event:"start",offset:s,node:t});s=p(t,s);o.push({event:"stop",offset:s,node:t})}}}}return s})(q,0);return o}function j(x,v,w){var p=0;var y="";var r=[];function t(){if(x.length&&v.length){if(x[0].offset!=v[0].offset){return(x[0].offset<v[0].offset)?x:v}else{return v[0].event=="start"?x:v}}else{return x.length?x:v}}function s(A){function z(B){return" "+B.nodeName+'="'+l(B.value)+'"'}return"<"+A.nodeName+Array.prototype.map.call(A.attributes,z).join("")+">"}while(x.length||v.length){var u=t().splice(0,1)[0];y+=l(w.substr(p,u.offset-p));p=u.offset;if(u.event=="start"){y+=s(u.node);r.push(u.node)}else{if(u.event=="stop"){var o,q=r.length;do{q--;o=r[q];y+=("</"+o.nodeName.toLowerCase()+">")}while(o!=u.node);r.splice(q,1);while(q<r.length){y+=s(r[q]);q++}}}}return y+l(w.substr(p))}function f(q){function o(s,r){return RegExp(s,"m"+(q.cI?"i":"")+(r?"g":""))}function p(y,w){if(y.compiled){return}y.compiled=true;var s=[];if(y.k){var r={};function z(A,t){t.split(" ").forEach(function(B){var C=B.split("|");r[C[0]]=[A,C[1]?Number(C[1]):1];s.push(C[0])})}y.lR=o(y.l||hljs.IR,true);if(typeof y.k=="string"){z("keyword",y.k)}else{for(var x in y.k){if(!y.k.hasOwnProperty(x)){continue}z(x,y.k[x])}}y.k=r}if(w){if(y.bWK){y.b="\\b("+s.join("|")+")\\s"}y.bR=o(y.b?y.b:"\\B|\\b");if(!y.e&&!y.eW){y.e="\\B|\\b"}if(y.e){y.eR=o(y.e)}y.tE=y.e||"";if(y.eW&&w.tE){y.tE+=(y.e?"|":"")+w.tE}}if(y.i){y.iR=o(y.i)}if(y.r===undefined){y.r=1}if(!y.c){y.c=[]}for(var v=0;v<y.c.length;v++){if(y.c[v]=="self"){y.c[v]=y}p(y.c[v],y)}if(y.starts){p(y.starts,w)}var u=[];for(var v=0;v<y.c.length;v++){u.push(y.c[v].b)}if(y.tE){u.push(y.tE)}if(y.i){u.push(y.i)}y.t=u.length?o(u.join("|"),true):{exec:function(t){return null}}}p(q)}function d(D,E){function o(r,M){for(var L=0;L<M.c.length;L++){var K=M.c[L].bR.exec(r);if(K&&K.index==0){return M.c[L]}}}function s(K,r){if(K.e&&K.eR.test(r)){return K}if(K.eW){return s(K.parent,r)}}function t(r,K){return K.i&&K.iR.test(r)}function y(L,r){var K=F.cI?r[0].toLowerCase():r[0];return L.k.hasOwnProperty(K)&&L.k[K]}function G(){var K=l(w);if(!A.k){return K}var r="";var N=0;A.lR.lastIndex=0;var L=A.lR.exec(K);while(L){r+=K.substr(N,L.index-N);var M=y(A,L);if(M){v+=M[1];r+='<span class="'+M[0]+'">'+L[0]+"</span>"}else{r+=L[0]}N=A.lR.lastIndex;L=A.lR.exec(K)}return r+K.substr(N)}function z(){if(A.sL&&!e[A.sL]){return l(w)}var r=A.sL?d(A.sL,w):g(w);if(A.r>0){v+=r.keyword_count;B+=r.r}return'<span class="'+r.language+'">'+r.value+"</span>"}function J(){return A.sL!==undefined?z():G()}function I(L,r){var K=L.cN?'<span class="'+L.cN+'">':"";if(L.rB){x+=K;w=""}else{if(L.eB){x+=l(r)+K;w=""}else{x+=K;w=r}}A=Object.create(L,{parent:{value:A}});B+=L.r}function C(K,r){w+=K;if(r===undefined){x+=J();return 0}var L=o(r,A);if(L){x+=J();I(L,r);return L.rB?0:r.length}var M=s(A,r);if(M){if(!(M.rE||M.eE)){w+=r}x+=J();do{if(A.cN){x+="</span>"}A=A.parent}while(A!=M.parent);if(M.eE){x+=l(r)}w="";if(M.starts){I(M.starts,"")}return M.rE?0:r.length}if(t(r,A)){throw"Illegal"}w+=r;return r.length||1}var F=e[D];f(F);var A=F;var w="";var B=0;var v=0;var x="";try{var u,q,p=0;while(true){A.t.lastIndex=p;u=A.t.exec(E);if(!u){break}q=C(E.substr(p,u.index-p),u[0]);p=u.index+q}C(E.substr(p));return{r:B,keyword_count:v,value:x,language:D}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:l(E)}}else{throw H}}}function g(s){var o={keyword_count:0,r:0,value:l(s)};var q=o;for(var p in e){if(!e.hasOwnProperty(p)){continue}var r=d(p,s);r.language=p;if(r.keyword_count+r.r>q.keyword_count+q.r){q=r}if(r.keyword_count+r.r>o.keyword_count+o.r){q=o;o=r}}if(q.language){o.second_best=q}return o}function i(q,p,o){if(p){q=q.replace(/^((<[^>]+>|\t)+)/gm,function(r,v,u,t){return v.replace(/\t/g,p)})}if(o){q=q.replace(/\n/g,"<br>")}return q}function m(r,u,p){var v=h(r,p);var t=a(r);if(t=="no-highlight"){return}var w=t?d(t,v):g(v);t=w.language;var o=c(r);if(o.length){var q=document.createElement("pre");q.innerHTML=w.value;w.value=j(o,c(q),v)}w.value=i(w.value,u,p);var s=r.className;if(!s.match("(\\s|^)(language-)?"+t+"(\\s|$)")){s=s?(s+" "+t):t}r.innerHTML=w.value;r.className=s;r.result={language:t,kw:w.keyword_count,re:w.r};if(w.second_best){r.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function n(){if(n.called){return}n.called=true;Array.prototype.map.call(document.getElementsByTagName("pre"),b).filter(Boolean).forEach(function(o){m(o,hljs.tabReplace)})}function k(){window.addEventListener("DOMContentLoaded",n,false);window.addEventListener("load",n,false)}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=m;this.initHighlighting=n;this.initHighlightingOnLoad=k;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\[\\s\\S]",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(q,r){var o={};for(var p in q){o[p]=q[p]}if(r){for(var p in r){o[p]=r[p]}}return o}}();hljs.LANGUAGES.bash=function(a){var g="true false";var e="if then else elif fi for break continue while in do done echo exit return set declare";var c={cN:"variable",b:"\\$[a-zA-Z0-9_#]+"};var b={cN:"variable",b:"\\${([^}]|\\\\})+}"};var h={cN:"string",b:'"',e:'"',i:"\\n",c:[a.BE,c,b],r:0};var d={cN:"string",b:"'",e:"'",c:[{b:"''"}],r:0};var f={cN:"test_condition",b:"",e:"",c:[h,d,c,b],k:{literal:g},r:0};return{k:{keyword:e,literal:g},c:[{cN:"shebang",b:"(#!\\/bin\\/bash)|(#!\\/bin\\/sh)",r:10},c,b,a.HCM,h,d,a.inherit(f,{b:"\\[ ",e:" \\]",r:0}),a.inherit(f,{b:"\\[\\[ ",e:" \\]\\]"})]}}(hljs);hljs.LANGUAGES.cs=function(a){return{k:"abstract as base bool break byte case catch char checked class const continue decimal default delegate do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int interface internal is lock long namespace new null object operator out override params private protected public readonly ref return sbyte sealed short sizeof stackalloc static string struct switch this throw true try typeof uint ulong unchecked unsafe ushort using virtual volatile void while ascending descending from get group into join let orderby partial select set value var where yield",c:[{cN:"comment",b:"///",e:"$",rB:true,c:[{cN:"xmlDocTag",b:"///|<!--|-->"},{cN:"xmlDocTag",b:"</?",e:">"}]},a.CLCM,a.CBLCLM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line region endregion pragma checksum"},{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},a.ASM,a.QSM,a.CNM]}}(hljs);hljs.LANGUAGES.ruby=function(e){var a="[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?";var j="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?";var g={keyword:"and false then defined module in return redo if BEGIN retry end for true self when next until do begin unless END rescue nil else break undef not super class case require yield alias while ensure elsif or include"};var c={cN:"yardoctag",b:"@[A-Za-z]+"};var k=[{cN:"comment",b:"#",e:"$",c:[c]},{cN:"comment",b:"^\\=begin",e:"^\\=end",c:[c],r:10},{cN:"comment",b:"^__END__",e:"\\n$"}];var d={cN:"subst",b:"#\\{",e:"}",l:a,k:g};var i=[e.BE,d];var b=[{cN:"string",b:"'",e:"'",c:i,r:0},{cN:"string",b:'"',e:'"',c:i,r:0},{cN:"string",b:"%[qw]?\\(",e:"\\)",c:i},{cN:"string",b:"%[qw]?\\[",e:"\\]",c:i},{cN:"string",b:"%[qw]?{",e:"}",c:i},{cN:"string",b:"%[qw]?<",e:">",c:i,r:10},{cN:"string",b:"%[qw]?/",e:"/",c:i,r:10},{cN:"string",b:"%[qw]?%",e:"%",c:i,r:10},{cN:"string",b:"%[qw]?-",e:"-",c:i,r:10},{cN:"string",b:"%[qw]?\\|",e:"\\|",c:i,r:10}];var h={cN:"function",bWK:true,e:" |$|;",k:"def",c:[{cN:"title",b:j,l:a,k:g},{cN:"params",b:"\\(",e:"\\)",l:a,k:g}].concat(k)};var f=k.concat(b.concat([{cN:"class",bWK:true,e:"$|;",k:"class module",c:[{cN:"title",b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",r:0},{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+e.IR+"::)?"+e.IR}]}].concat(k)},h,{cN:"constant",b:"(::)?(\\b[A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:":",c:b.concat([{b:j}]),r:0},{cN:"symbol",b:a+":",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"number",b:"\\?\\w"},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},{b:"("+e.RSR+")\\s*",c:k.concat([{cN:"regexp",b:"/",e:"/[a-z]*",i:"\\n",c:[e.BE,d]}]),r:0}]));d.c=f;h.c[1].c=f;return{l:a,k:g,c:f}}(hljs);hljs.LANGUAGES.diff=function(a){return{c:[{cN:"chunk",b:"^\\@\\@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +\\@\\@$",r:10},{cN:"chunk",b:"^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*$",r:10},{cN:"chunk",b:"^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-$",r:10},{cN:"header",b:"Index: ",e:"$"},{cN:"header",b:"=====",e:"=====$"},{cN:"header",b:"^\\-\\-\\-",e:"$"},{cN:"header",b:"^\\*{3} ",e:"$"},{cN:"header",b:"^\\+\\+\\+",e:"$"},{cN:"header",b:"\\*{5}",e:"\\*{5}$"},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}}(hljs);hljs.LANGUAGES.javascript=function(a){return{k:{keyword:"in if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const",literal:"true false null undefined NaN Infinity"},c:[a.ASM,a.QSM,a.CLCM,a.CBLCLM,a.CNM,{b:"("+a.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[a.CLCM,a.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",i:"\\n",c:[{b:"\\\\/"}]},{b:"<",e:">;",sL:"xml"}],r:0},{cN:"function",bWK:true,e:"{",k:"function",c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[a.CLCM,a.CBLCLM],i:"[\"'\\(]"}],i:"\\[|%"}]}}(hljs);hljs.LANGUAGES.css=function(a){var b={cN:"function",b:a.IR+"\\(",e:"\\)",c:[a.NM,a.ASM,a.QSM]};return{cI:true,i:"[=/|']",c:[a.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:"font-face page"},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:"import page media charset",c:[b,a.ASM,a.QSM,a.NM]},{cN:"tag",b:a.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[a.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[b,a.NM,a.QSM,a.ASM,a.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}(hljs);hljs.LANGUAGES.xml=function(a){var c="[A-Za-z0-9\\._:-]+";var b={eW:true,c:[{cN:"attribute",b:c,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style(?=\\s|>|$)",e:">",k:{title:"style"},c:[b],starts:{e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script(?=\\s|>|$)",e:">",k:{title:"script"},c:[b],starts:{e:"<\/script>",rE:true,sL:"javascript"}},{b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},b]}]}}(hljs);hljs.LANGUAGES.http=function(a){return{i:"\\S",c:[{cN:"status",b:"^HTTP/[0-9\\.]+",e:"$",c:[{cN:"number",b:"\\b\\d{3}\\b"}]},{cN:"request",b:"^[A-Z]+ (.*?) HTTP/[0-9\\.]+$",rB:true,e:"$",c:[{cN:"string",b:" ",e:" ",eB:true,eE:true}]},{cN:"attribute",b:"^\\w",e:": ",eE:true,i:"\\n|\\s|=",starts:{cN:"string",e:"$"}},{b:"\\n\\n",starts:{sL:"",eW:true}}]}}(hljs);hljs.LANGUAGES.java=function(a){return{k:"false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws",c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",c:[{cN:"javadoctag",b:"@[A-Za-z]+"}],r:10},a.CLCM,a.CBLCLM,a.ASM,a.QSM,{cN:"class",bWK:true,e:"{",k:"class interface",i:":",c:[{bWK:true,k:"extends implements",r:10},{cN:"title",b:a.UIR}]},a.CNM,{cN:"annotation",b:"@[A-Za-z]+"}]}}(hljs);hljs.LANGUAGES.php=function(a){var e={cN:"variable",b:"\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"};var b=[a.inherit(a.ASM,{i:null}),a.inherit(a.QSM,{i:null}),{cN:"string",b:'b"',e:'"',c:[a.BE]},{cN:"string",b:"b'",e:"'",c:[a.BE]}];var c=[a.BNM,a.CNM];var d={cN:"title",b:a.UIR};return{cI:true,k:"and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return implements parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception php_user_filter default die require __FUNCTION__ enddeclare final try this switch continue endfor endif declare unset true false namespace trait goto instanceof insteadof __DIR__ __NAMESPACE__ __halt_compiler",c:[a.CLCM,a.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+"}]},{cN:"comment",eB:true,b:"__halt_compiler.+?;",eW:true},{cN:"string",b:"<<<['\"]?\\w+['\"]?$",e:"^\\w+;",c:[a.BE]},{cN:"preprocessor",b:"<\\?php",r:10},{cN:"preprocessor",b:"\\?>"},e,{cN:"function",bWK:true,e:"{",k:"function",i:"\\$|\\[|%",c:[d,{cN:"params",b:"\\(",e:"\\)",c:["self",e,a.CBLCLM].concat(b).concat(c)}]},{cN:"class",bWK:true,e:"{",k:"class",i:"[:\\(\\$]",c:[{bWK:true,eW:true,k:"extends",c:[d]},d]},{b:"=>"}].concat(b).concat(c)}}(hljs);hljs.LANGUAGES.python=function(a){var f={cN:"prompt",b:"^(>>>|\\.\\.\\.) "};var c=[{cN:"string",b:"(u|b)?r?'''",e:"'''",c:[f],r:10},{cN:"string",b:'(u|b)?r?"""',e:'"""',c:[f],r:10},{cN:"string",b:"(u|r|ur)'",e:"'",c:[a.BE],r:10},{cN:"string",b:'(u|r|ur)"',e:'"',c:[a.BE],r:10},{cN:"string",b:"(b|br)'",e:"'",c:[a.BE]},{cN:"string",b:'(b|br)"',e:'"',c:[a.BE]}].concat([a.ASM,a.QSM]);var e={cN:"title",b:a.UIR};var d={cN:"params",b:"\\(",e:"\\)",c:["self",a.CNM,f].concat(c)};var b={bWK:true,e:":",i:"[${=;\\n]",c:[e,d],r:10};return{k:{keyword:"and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda nonlocal|10",built_in:"None True False Ellipsis NotImplemented"},i:"(</|->|\\?)",c:c.concat([f,a.HCM,a.inherit(b,{cN:"function",k:"def"}),a.inherit(b,{cN:"class",k:"class"}),a.CNM,{cN:"decorator",b:"@",e:"$"},{b:"\\b(print|exec)\\("}])}}(hljs);hljs.LANGUAGES.sql=function(a){return{cI:true,c:[{cN:"operator",b:"(begin|start|commit|rollback|savepoint|lock|alter|create|drop|rename|call|delete|do|handler|insert|load|replace|select|truncate|update|set|show|pragma|grant)\\b(?!:)",e:";",eW:true,k:{keyword:"all partial global month current_timestamp using go revoke smallint indicator end-exec disconnect zone with character assertion to add current_user usage input local alter match collate real then rollback get read timestamp session_user not integer bit unique day minute desc insert execute like ilike|2 level decimal drop continue isolation found where constraints domain right national some module transaction relative second connect escape close system_user for deferred section cast current sqlstate allocate intersect deallocate numeric public preserve full goto initially asc no key output collation group by union session both last language constraint column of space foreign deferrable prior connection unknown action commit view or first into float year primary cascaded except restrict set references names table outer open select size are rows from prepare distinct leading create only next inner authorization schema corresponding option declare precision immediate else timezone_minute external varying translation true case exception join hour default double scroll value cursor descriptor values dec fetch procedure delete and false int is describe char as at in varchar null trailing any absolute current_time end grant privileges when cross check write current_date pad begin temporary exec time update catalog user sql date on identity timezone_hour natural whenever interval work order cascade diagnostics nchar having left call do handler load replace truncate start lock show pragma exists number",aggregate:"count sum min max avg"},c:[{cN:"string",b:"'",e:"'",c:[a.BE,{b:"''"}],r:0},{cN:"string",b:'"',e:'"',c:[a.BE,{b:'""'}],r:0},{cN:"string",b:"`",e:"`",c:[a.BE]},a.CNM]},a.CBLCLM,{cN:"comment",b:"--",e:"$"}]}}(hljs);hljs.LANGUAGES.ini=function(a){return{cI:true,i:"[^\\s]",c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9\\[\\]_-]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:true,k:"on off true false yes no",c:[a.QSM,a.NM]}]}]}}(hljs);hljs.LANGUAGES.perl=function(e){var a="getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when";var d={cN:"subst",b:"[$@]\\{",e:"\\}",k:a,r:10};var b={cN:"variable",b:"\\$\\d"};var i={cN:"variable",b:"[\\$\\%\\@\\*](\\^\\w\\b|#\\w+(\\:\\:\\w+)*|[^\\s\\w{]|{\\w+}|\\w+(\\:\\:\\w*)*)"};var f=[e.BE,d,b,i];var h={b:"->",c:[{b:e.IR},{b:"{",e:"}"}]};var g={cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5};var c=[b,i,e.HCM,g,{cN:"comment",b:"^\\=\\w",e:"\\=cut",eW:true},h,{cN:"string",b:"q[qwxr]?\\s*\\(",e:"\\)",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\[",e:"\\]",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\{",e:"\\}",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\|",e:"\\|",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\<",e:"\\>",c:f,r:5},{cN:"string",b:"qw\\s+q",e:"q",c:f,r:5},{cN:"string",b:"'",e:"'",c:[e.BE],r:0},{cN:"string",b:'"',e:'"',c:f,r:0},{cN:"string",b:"`",e:"`",c:[e.BE]},{cN:"string",b:"{\\w+}",r:0},{cN:"string",b:"-?\\w+\\s*\\=\\>",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{b:"("+e.RSR+"|\\b(split|return|print|reverse|grep)\\b)\\s*",k:"split return print reverse grep",r:0,c:[e.HCM,g,{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[e.BE],r:0}]},{cN:"sub",bWK:true,e:"(\\s*\\(.*?\\))?[;{]",k:"sub",r:5},{cN:"operator",b:"-\\w\\b",r:0}];d.c=c;h.c[1].c=c;return{k:a,c:c}}(hljs);hljs.LANGUAGES.json=function(a){var e={literal:"true false null"};var d=[a.QSM,a.CNM];var c={cN:"value",e:",",eW:true,eE:true,c:d,k:e};var b={b:"{",e:"}",c:[{cN:"attribute",b:'\\s*"',e:'"\\s*:\\s*',eB:true,eE:true,c:[a.BE],i:"\\n",starts:c}],i:"\\S"};var f={b:"\\[",e:"\\]",c:[a.inherit(c,{cN:null})],i:"\\S"};d.splice(d.length,0,b,f);return{c:d,k:e,i:"\\S"}}(hljs);hljs.LANGUAGES.cpp=function(a){var b={keyword:"false int float while private char catch export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace unsigned long throw volatile static protected bool template mutable if public friend do return goto auto void enum else break new extern using true class asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue wchar_t inline delete alignof char16_t char32_t constexpr decltype noexcept nullptr static_assert thread_local restrict _Bool complex",built_in:"std string cin cout cerr clog stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr"};return{k:b,i:"</",c:[a.CLCM,a.CBLCLM,a.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},a.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:b,r:10,c:["self"]}]}}(hljs);
+</script><script>hljs.initHighlightingOnLoad();</script><title>Leveling Up Your Apps with jQuery</title></head><body><a href="https://github.com/mjp2220/jQueryTalk"><img class="github" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a><p><a id="top"></a></p>
+<h1 id="leveling-up-your-apps-with-jquery">Leveling Up Your Apps with jQuery</h1>
+<p><em>Building responsive, interactive web applications.</em></p>
+<p>Written and developed by <a href="file:///Users/dan/working/learn-jquery/mailto:matthew@adicu.com">Matt Piccolella</a> and <a href="https://adicu.com">ADI</a>.</p>
+<p>Credit to <a href="http://eloquentjavascript.net/">Eloquent Javascript</a>, <a href="http://jqfundamentals.com/">jQuery Fundamentals</a>, and <a href="http://learn.jquery.com/">Learn jQuery</a>.</p>
+<h2 id="getting-started-faqs">Getting Started: FAQs</h2>
+<p>Before we can learn jQuery, we must understand what it is, how we will use it, and what we can expect to learn from this guide. </p>
+<h3 id="what-is-jquery">What is jQuery?</h3>
+<p><a href="http://jquery.com/">jQuery</a> is a small, simple client-side JavaScript web framework that is used by 60% of the internet's top websites.</p>
+<h3 id="what-is-jquery-used-for">What is jQuery used for?</h3>
+<p>Web developers use jQuery for a variety of things, anywhere from traversing and manipulating the DOM (e.g. changing text on a page without reloading it), event handling (responding to button clicks or form submissions on the client-side), and making HTTP requests (posting information to a backend). Essentially, jQuery is useful in making "single-page web applications," applications which load a page once and do everything else from inside the browser.</p>
+<h3 id="what-will-this-tutorial-teach-me">What will this tutorial teach me?</h3>
+<p>This tutorial is not meant to serve as a more formal introduction to JavaScript or jQuery. It is meant to teach only the basics of this incredibly feature-rich library, and shows only some of the things that the framework can be used for.</p>
+<h2 id="using-this-document">Using this Document</h2>
+<p>This document contains a series of several sections, each of which explains a certain feature of jQuery that is valuable in building web applications.</p>
+<h3 id="running-javascript-code">Running JavaScript code</h3>
+<p>Unlike many other programming languages, JavaScript runs in the browser. This means that JavaScript code does not need to be compiled, and is instead run through within HTML. </p>
+<p>Therefore, to run the sample code, one must merely open an HTML file, which has JavaScript code attached, in her browser of choice (Chrome, Safari, Firefox). We will do this in the second section of the course.</p>
+<p>In addition, one can also type JavaScript code into the JavaScript console, which can be opened from within a browser. We will discuss how to do this in the first part of the class.</p>
+<h4 id="download-sample-code-here"><a href="http://learn.adicu.com/jquery/code.zip">Download Sample Code Here</a></h4>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#html">Preface: HTML and the DOM</a></li>
+<li><a href="#javascript">1.0 The Basics of JavaScript</a><ul>
+<li><a href="#console">Preface: The JavaScript Console</a></li>
+<li><a href="#variables">1.1 Variables</a></li>
+<li><a href="#functions">1.2 Functions</a></li>
+<li><a href="#objects">1.3 Objects</a></li>
+<li><a href="#arrays">1.4 Arrays</a></li>
+<li><a href="#undefined">1.5 Undefined v. Null</a></li>
+</ul>
+</li>
+<li><a href="#jquery">2.0 The Basics of jQuery</a><ul>
+<li><a href="#selectors">2.1 Selectors</a></li>
+<li><a href="#document">2.2 <code>$(document).ready()</code></a></li>
+<li><a href="#creation">2.3 Creating New Elements</a></li>
+<li><a href="#iteration">2.4 Iterating Through Elements</a></li>
+<li><a href="#more">2.5 More and More</a></li>
+</ul>
+</li>
+<li><a href="#events">3.0 Events and Delegation</a><ul>
+<li><a href="#jquery-html">Preface: Running jQuery from HTML</a></li>
+<li><a href="#delegation">3.1 Understanding Delegation</a></li>
+<li><a href="#click">3.2 Click</a></li>
+<li><a href="#hover">3.3 Hover</a></li>
+<li><a href="#scroll">3.4 Scroll</a></li>
+<li><a href="#keypress">3.5 Key Press</a></li>
+</ul>
+</li>
+<li><a href="#topics">4.0 More Topics</a><ul>
+<li><a href="#whatajax">4.1 AJAX</a></li>
+<li><a href="#effects">4.2 Effects</a></li>
+<li><a href="#ui">4.3 jQuery UI</a></li>
+</ul>
+</li>
+<li><a href="#additionalresources">Additional Resources</a></li>
+</ul>
+<hr />
+<p><a id="html"></a></p>
+<h2 id="preface-htmlcss-and-the-dom">Preface: HTML/CSS and the DOM</h2>
+<p>Web pages are created using a language called HTML. When HTML is loaded by the browser, it creates something called a DOM (Document Object Model), which is a standardized, tree-like structure that provides a structured way to access and manipulate elements within the document. JavaScript, and in particular jQuery, use the DOM in order to allow you to retrieve, and more importantly, manipulate elements (buttons, divs, links, etc.) on an HTML page.</p>
+<p>To be able to retrieve elements from the DOM using jQuery, we have to have a way to be able to identify different elements of an HTML page. Generally, there are three ways to identify HTML elements, each of which is used heavily in both CSS and Javascript/jQery.</p>
+<h3 id="tagelement">Tag/Element</h3>
+<pre><code class="html">&lt;a href=&quot;https://adicu.com&quot;&gt;ADICU&lt;/a&gt;
+&lt;p&gt;ADI is awesome!&lt;/p&gt;
+</code></pre>
+
+<p>Here, we can identify a link by its tag <code>a</code>. For example:</p>
+<pre><code class="css">a
+</code></pre>
+
+<h3 id="class">Class</h3>
+<pre><code class="html">&lt;p class=&quot;sampleclass&quot;&gt;Some sample paragraph.&lt;/p&gt;
+</code></pre>
+
+<p>We can select an element by its class <code>sampleclass</code> by preceding it with a period, as such:</p>
+<pre><code class="css">.sampleclass
+</code></pre>
+
+<h3 id="id">ID</h3>
+<pre><code class="html">&lt;h1 id=&quot;specificheader&quot;&gt;This One Header&lt;/h1&gt;
+</code></pre>
+
+<p>To select an element by its ID, we include a `#`` before its name. Its select would thus be:</p>
+<pre><code class="css">#specificheader
+</code></pre>
+
+<p>An important thing to note here is that an ID is meant to be unique, and therefore good for an element that is meant to occur just once.</p>
+<h3 id="multiple-selectors">Multiple Selectors</h3>
+<p>We can chain these selectors together to be even more specific. Say, for example, we wanted to select all links of a certain class:</p>
+<pre><code class="html">&lt;a class=&quot;some_class&quot;&gt;Desired Link&lt;/a&gt;
+</code></pre>
+
+<p>We could write:</p>
+<pre><code class="css">a.some_class
+</code></pre>
+
+<p>Or, say we had a div with a certain ID, and that div has some paragraph elements inside of it, as such:</p>
+<pre><code class="html">&lt;div id=&quot;content&quot;&gt;
+    &lt;p&gt;Paragraph One&lt;/p&gt;
+    &lt;p&gt;Paragraph Two&lt;/p&gt;
+    &lt;p&gt;Paragraph Three&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>To select the links inside this div, we could use both the ID and tag selector by writing:</p>
+<pre><code class="css">#content p
+</code></pre>
+
+<p>This identification process is very similar to the process used in CSS. For example, say we wanted to select each of the links of class "blue_link" and make them blue. We could write:</p>
+<pre><code class="css">a.blue_link {
+    color: blue;
+}
+</code></pre>
+
+<p>The focus of JavaScript is being able to select these elements, so a solid understanding of this section is hugely important to understanding jQuery.</p>
+<p><a id="javascript"></a></p>
+<h2 id="10-the-basics-of-javascript">1.0 The Basics of Javascript</h2>
+<p>JavaScript is the programming language of the web. It is used on nearly every website to do all sorts of things, and jQuery is built directly on top of it. It is somewhat similar to other programming languages, like Python, in its basics, but it ultimately prides itself on its uniqueness. Here, we will define some of the most basic concepts of JavaScript.</p>
+<p><a id="console"></a></p>
+<h2 id="preface-running-code-in-the-console">Preface: Running Code in the Console</h2>
+<p>To run JavaScript code, we can type it into the JavaScript console. Thus, if you'd like to write the code that I have typed, you can open the JavaScript console in your browser of choice. Here is a screenshot of the browser in Chrome:</p>
+<p><img alt="JS Console" src="https://dl.dropboxusercontent.com/s/91l4s20ycafliqp/JavaScript%20console.png" /></p>
+<p>The console is very important to JavaScript development, and is very useful for debugging. To open the console in Google Chrome, click the menu at the top right hand corner of the screen, click <code>More tools</code> at the bottom of the menu, and then click <code>JavaScript Console</code>. The process should be similar in other browsers.</p>
+<p><a id="variables"></a></p>
+<h3 id="11-variables">1.1 Variables</h3>
+<p>Variables in JavaScript are very similar to variables in other programming languages. To declare one, we simply type:</p>
+<pre><code class="javascript">var my_name = &quot;Matt&quot;;
+</code></pre>
+
+<p>Notice a few things. We use the word <code>var</code> to identify a variable. Also, we do not include a type, like we would in Java in something like <code>int x = 5;</code>. This means that our variables can take on several types:</p>
+<pre><code class="javascript">var school = &quot;Columbia&quot;;
+var favorite_number = 17;
+var isTeen = true;
+</code></pre>
+
+<p>In addition, we finish our expressions with semi-colons, as we do in Java.</p>
+<p>To print the value of a variable, we can use the function <code>console.log</code>, as follows:</p>
+<pre><code class="javascript">var favoriteFood = &quot;pizza&quot;;
+console.log(favoriteFood);
+</code></pre>
+
+<p><a id="functions"></a></p>
+<h3 id="12-functions">1.2 Functions</h3>
+<p>Functions work in the same way as other languages: they take parameters and return a value. To declare a function, we use the reserved word <code>function</code>:</p>
+<pre><code class="javascript">function add(x,y) {
+    return x + y;
+}
+</code></pre>
+
+<p>To call a function is the same as other languages:</p>
+<pre><code class="javascript">var sum = add(5,9);
+</code></pre>
+
+<p>Something that is particuarly unique about JavaScript is that functions are what are called <strong>first class objects</strong>, meaning that functions can be passed as parameters, returned by functions, and stored in variables. For example:</p>
+<pre><code class="javascript">// Function that adds two numbers.
+var add = function(x,y) {
+    return x + y;
+}
+// Function that takes a math function and applies it with 42 and x.
+var applyTo42(mathFunction, x) {
+    return mathFunction(x, 42);
+}
+var result = applyTo42(add, 50); // 92
+</code></pre>
+
+<p>Thus, here, we define a function and set it equal to a variable. Then, we define another function that takes a function as one of its parameters, and then call it by passing our original function.</p>
+<p><a id="objects"></a></p>
+<h3 id="13-objects">1.3 Objects</h3>
+<p>In JavaScript, everything besides the five primitives (strings, booleans, numbers, <code>null</code>, and <code>undefined</code>) are objects.</p>
+<p>Objects in JavaScript can be created using curly brackets, as follows:</p>
+<pre><code class="javascript">var person = {
+    name : &quot;Jane Doe&quot;,
+    age : 18,
+    school : &quot;SEAS&quot;
+};
+</code></pre>
+
+<p>Here, we create an object, call it <code>person</code>, and give it three properties: <code>name</code>, <code>age</code>, and <code>school</code>. Accessing or modifying these properities can be done in either of two ways:</p>
+<pre><code class="javascript">// Dot Notation
+var name = person.name;
+person.age = 20;
+
+// Bracket Notation
+var age = person[&quot;age&quot;];
+person[&quot;school&quot;] = &quot;Barnard&quot;;
+</code></pre>
+
+<p>Interestingly, we can set attributes of an object to a function, as follows:</p>
+<pre><code class="javascript">var person = {
+    name : &quot;Jane Doe&quot;,
+    age : 18,
+    school : &quot;SEAS&quot;,
+    describe : function() {
+        console.log(this.name + &quot; &quot; + this.age + &quot; &quot; + this.school);
+    }
+};
+</code></pre>
+
+<p>Thus, if we wanted to call this function of the object, we simply call <code>person.describe()</code>.</p>
+<p>Notice the use of the keyword <code>this</code>. <code>this</code> is used to refer to the object itself. Thus, to access the properties <code>name</code>, <code>age</code>, and <code>self</code>, we can simply use the keyword <code>this</code> to indicate the object in which the function resides. This is similar to Java's <code>this</code> keyword or Python's <code>self</code> keyword.</p>
+<p><a id="arrays"></a></p>
+<h3 id="14-arrays">1.4 Arrays</h3>
+<p>Arrays in JavaScript are very similar to arrays in other programming languages; we set and get using the bracket notation, and can access its length:</p>
+<pre><code class="javascript">var numberArray = [1,2,3,4,5,6];
+console.log(numberArray[2]) # 3
+console.log(numberArray.length) # 6
+</code></pre>
+
+<p>However, there are also some other handy methods:</p>
+<pre><code class="javascript">var numberArray = [3,2,1,4,5,6];
+numberArray.pop(); // Removes the last element, [3,2,1,4,5]
+numberArray.push(10); // Adds element at the end, [3,2,1,4,5,10]
+numberArray.sort(); // Sorts the array, [1,2,3,4,5,10]
+numberArray.reverse(); // Reverses the array [10,5,4,3,2,1]
+</code></pre>
+
+<p>One interesting aspect is the <code>forEach</code> method in the arrays, which allows us to pass a function which is executed for each item in an array:</p>
+<pre><code class="javascript">var numberArray = [2,4,6,8,10];
+numberArray.forEach(function(number) {
+    console.log(number);
+});
+</code></pre>
+
+<p><a id="undefined"></a></p>
+<h3 id="15-undefined-v-null">1.5 Undefined v. Null</h3>
+<p>One very important concept in JavaScript is the difference between <code>undefine</code>and <code>null</code>. </p>
+<p><code>null</code> is a value and is used explicitly to indicate a value is missing. For instance, say we have a person object, but we don't know his name:</p>
+<pre><code class="javascript">var person = {
+    name: null,
+    age: 19
+};
+</code></pre>
+
+<p>This is deliberate and useful for showing that a certain value is missing.</p>
+<p><code>undefined</code> is used to show that a certain value or property has not yet been set. For example, on the same person object as above, say I tried to access a property we haven't added:</p>
+<pre><code class="javascript">console.log(person.favoriteFood);
+</code></pre>
+
+<p>This would yield the value <code>undefined</code> to indicate that no value for that property has yet been set.</p>
+<p><a id="jquery"></a></p>
+<h2 id="20-the-basics-of-jquery">2.0 The Basics of jQuery</h2>
+<p>jQuery makes it super easy for us to utilize the JavaScript we just learned in order to manipulate our HTML page. Here, we will show you how we can start to use it on our web pages.</p>
+<p><a id="selectors"></a></p>
+<h3 id="21-selectors">2.1 Selectors</h3>
+<p>The selectors that we looked at in the preface are what jQuery is built on. To select an element in jQuery, we essentially use its HTML selector as follows:</p>
+<pre><code class="javascript">$(&quot;p.some_class&quot;);
+</code></pre>
+
+<p>It's as simple as that! The <code>$</code> is the most characteristic character in all of jQuery, and you'll see that it appears everywhere. This selection returns an array, so we can access each element through our array syntax. So, given:</p>
+<pre><code class="html">&lt;div id=&quot;content&quot;&gt;
+    &lt;p&gt;Paragraph One&lt;/p&gt;
+    &lt;p&gt;Paragraph Two&lt;/p&gt;
+    &lt;p&gt;Paragraph Three&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="javascript">var contentParagraphs = $(&quot;#content p&quot;);
+console.log(contentParagraphs[1]); // Paragraph Two
+console.log(contentParagraphs.length); // 3
+</code></pre>
+
+<p>Once we have the elements we want to interact with in our JavaScript code, it becomes quite easy for us to add to, change, or remove from the DOM.</p>
+<p><a id="document"></a></p>
+<h3 id="22-documentready">2.2 <code>$(document).ready()</code></h3>
+<p>When we are utilizing elements that appear in the DOM, it is hugely important for us that we don't execute our code until the document is ready and has been created. For this reason, jQuery has a hugely important method called <code>$(document).ready()</code> that allows us to wait until our document is ready until we execute our code. </p>
+<p>The function takes a function, and looks as follows:</p>
+<pre><code class="javascript">$(document).ready(function() {
+    // Include all the JavaScript we want to run
+    console.log(&quot;Our document is ready!&quot;);
+});
+</code></pre>
+
+<p>Because this is used so often, jQuery has shortened it for us to be simply:</p>
+<pre><code class="javascript">$(function() {
+    // Include all the JavaScript we want to run
+    console.log(&quot;Our document is ready using our new, shortened syntax!&quot;);
+});
+</code></pre>
+
+<p>It is recommended that all the code that is wanted on a webpage be wrapped in this <code>$(document).ready()</code> call, as it assures that all the elements we expect to be there will be there.</p>
+<p><a id="creation"></a></p>
+<h3 id="23-creating-new-elements">2.3 Creating New Elements</h3>
+<p>We can use jQuery to create new elements as well. We do this by simply including HTML inside our <code>$</code> selector. For example, say we have a <code>div</code> containing some links:</p>
+<pre><code class="html">&lt;div id=&quot;links&quot;&gt;
+    &lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;
+    &lt;a href=&quot;http://facebook.com&quot;&gt;Facebook&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Now, say inside our JavaScript code, say we want to create a new link, and add it to our section of links. We can do that by creating a new element:</p>
+<pre><code class="javascript">var newLink = $(&quot;&lt;a href='http://www.adicu.com'&gt;ADICU&lt;/a&gt;&quot;);
+</code></pre>
+
+<p>Then, by selecting the <code>div</code> using our previous selectors, we can add it using the <code>append</code> function:</p>
+<pre><code class="javascript">$(&quot;#links&quot;).append(newLink);
+</code></pre>
+
+<p>Following this, our webpage will now look as follows:</p>
+<pre><code class="html">&lt;div id=&quot;links&quot;&gt;
+    &lt;a href=&quot;http://www.google.com&quot;&gt;Google&lt;/a&gt;
+    &lt;a href=&quot;http://facebook.com&quot;&gt;Facebook&lt;/a&gt;
+    &lt;a href=&quot;http://www.adicu.com&quot;&gt;ADICU&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>The ability to create new elements will be hugely important to us as we continue making interactive webpages.
+<a id="iteration"></a></p>
+<h3 id="24-iterating-through-elements">2.4 Iterating Through Elements</h3>
+<p>Because our selections yield arrays, we can iterate through each of the items in the array using the array syntax. For example, say we have a list:</p>
+<pre><code class="html">&lt;ul&gt;
+    &lt;li class=&quot;veggie&quot;&gt;Broccoli&lt;/li&gt;
+    &lt;li class=&quot;veggie&quot;&gt;Carrots&lt;/li&gt;
+    &lt;li class=&quot;veggie&quot;&gt;Tomatoes&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>Say we want to add the number of the element in bold before each element in the list. We do that using the following code:</p>
+<pre><code class="javascript">$(&quot;li.veggie&quot;).each(function(index, element) {
+    $(element).prepend('&lt;b&gt;' + index + ': &lt;/b&gt;'); 
+});
+</code></pre>
+
+<p>The code goes through each element in the selection, executing a function which takes both the index and the element at that index. The code then prepends some HTML to each of the elements in our selection. Our new HTML will look as follows:</p>
+<pre><code class="html">&lt;ul&gt;
+    &lt;li class=&quot;veggie&quot;&gt;&lt;b&gt;1: &lt;/b&gt;Broccoli&lt;/li&gt;
+    &lt;li class=&quot;veggie&quot;&gt;&lt;b&gt;2: &lt;/b&gt;Carrots&lt;/li&gt;
+    &lt;li class=&quot;veggie&quot;&gt;&lt;b&gt;3: &lt;/b&gt;Tomatoes&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>It's as simple as that to make substantive changes to a webpage after it has been loaded!</p>
+<p><a id="more"></a></p>
+<h3 id="25-more-and-more">2.5 More and More</h3>
+<p>There are so many more things that can be done using jQuery to select and manipulate elements in the DOM. These are just a few highlights:</p>
+<ul>
+<li><code>add/removeClass</code> - add or remove a CSS class from an element</li>
+<li><code>filter</code> - allow you to filter a selection using a second selector</li>
+<li><code>css</code> - add a CSS rule to an element</li>
+<li><code>attr</code> - allows you to set an attribute of an element, such as <code>href</code> of an <code>a</code></li>
+<li><code>val</code> - get the value of an input element in a form</li>
+</ul>
+<p>Many more functions exist; if you can think of something you'd like to get/set, jQuery most likely has a way to. More documentation on these, what are collectively referred to as <strong>jQuery Core</strong>, is available <a href="http://learn.jquery.com/">here</a>.</p>
+<p><a id="events"></a></p>
+<h2 id="30-events-and-delegation">3.0 Events and Delegation</h2>
+<p>One of the main features of jQuery is its handling of events that happen on the browser; these events include clicks, mouse movements, form submissions, and many other things. Here, we will learn how to respond to these events using jQuery.</p>
+<p><a id="jquery-html"></a></p>
+<h3 id="preface-running-jquery-from-html">Preface: Running jQuery from HTML</h3>
+<p>Now that our jQuery code has gone beyond small code snippets, it is important for us to remember how to link JavaScript and how to load jQuery inside of an HTML file.</p>
+<p>To link jQuery, we simply include a <code>script</code> tag inside of our <code>head</code> inside the HTML page, as follows:</p>
+<p><strong><code>index.html</code></strong></p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Matt's Page&lt;/title&gt;
+        &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Now, any JavaScript we run inside this HTML page will have access to the jQuery framework. The installation process is now complete!</p>
+<p>Before, we discussed how we want to place all our code inside a single function, <code>$(document).ready()</code>. We create an external file called <code>script.js</code> and place all our jQuery inside of there, as follows:</p>
+<p><strong><code>script.js</code></strong></p>
+<pre><code class="javascript">$(document).ready(function() {
+    // Include all the JavaScript we want to run inside this HTML page
+    console.log(&quot;Our document is ready!&quot;);
+});
+</code></pre>
+
+<p>Now, we simply link to it in our HTML page the same way we linked to jQuery:</p>
+<p><strong><code>index.html</code></strong></p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Matt's Page&lt;/title&gt;
+        &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Now, as long as our JavaScript file is located in the same directory, it will load correctly. IMPORTANT: we must link to jQuery before we link to our own JavaScript file. Our JavaScript file depends on the jQuery library, so we need to have loaded that first before calling our own file.</p>
+<p><a id="delegation"></a></p>
+<h3 id="31-understanding-delegation">3.1 Understanding Delegation</h3>
+<p>jQuery is built around events. Let's look back at the <code>$(document).ready()</code> function that we used before:</p>
+<pre><code class="javascript">$(document).ready(function() {
+    // Include all the JavaScript we want to run inside this HTML page
+    console.log(&quot;Our document is ready!&quot;);
+});
+</code></pre>
+
+<p>Here, <code>$document.ready()</code> is an event that is "fired" by our browser when the document is loaded. jQuery is useful because it intercepts the events so that we don't have to. All we have to do is provide a function we want to run when that event happens, like the function we passed in the above example. What jQuery does is holds onto our code, and executes it each time it intercepts an event that has occurred. In development, this is referred to as <strong>delegation</strong>; we are delegating the processing of an event to a function that we pass to our event handler. Other examples of these events that we will look at include <code>click</code>, <code>hover</code>, <code>scroll</code>, and <code>keypress</code>.</p>
+<p><a id="click"></a></p>
+<h3 id="32-click">3.2 Click</h3>
+<p>One of the main functionalities of many webpages is responded to click events; if a user clicks on some part of the screen, we may want to load new data, hide certain elements, or some other action. This can be done using the <code>click</code> handler. Say, for instance, each time a button on our screen is clicked, we want to add some new text to a page. Here's how we do it:</p>
+<p><strong>index.html</strong></p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Matt's Page&lt;/title&gt;
+        &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+        &lt;a id=&quot;addbutton&quot;&gt;Click me!&lt;/a&gt;
+        &lt;div id=&quot;content&quot;&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>script.js</strong></p>
+<pre><code class="javascript">// Remember, include all your JavaScript code inside this function!
+$(document).ready(function() {
+    $(&quot;#addbutton&quot;).click(function() {
+        $(&quot;#content&quot;).append(&quot;&lt;p&gt;My name is Matt!&lt;/p&gt;&quot;);
+    });
+});
+</code></pre>
+
+<p>Here, we select the <code>#addbutton</code> link that we added in our HTML file. We handle the <code>click</code> event for this element, meaning each time someone clicks on our link, we want the function we supply it to be called. Inside this function, we append an HTML tag to the <code>#content</code> div that we created in our HTML file. Try it our yourself!</p>
+<p><a id="hover"></a></p>
+<h3 id="33-hover">3.3 Hover</h3>
+<p>Imagine if we're hovering over an element on the page, and we want to make some kind of a change as a result of that. For example, say we have an element that we want to not be on the screen when we're hovering, but on the screen when we are. Let's do that now:</p>
+<p><strong>index.html</strong></p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Matt's Page&lt;/title&gt;
+        &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+        &lt;a id=&quot;addbutton&quot;&gt;Click me!&lt;/a&gt;
+        &lt;h2 id=&quot;hide&quot;&gt;Try to hide me!&lt;/h2&gt;
+        &lt;div id=&quot;content&quot;&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>script.js</strong></p>
+<pre><code class="javascript">$(document).ready(function() {
+    // More code
+    $(&quot;#addbutton&quot;).hover(
+      function() {
+        $(&quot;#hide&quot;).hide();
+      },
+      function() {
+        $(&quot;#hide&quot;).show();
+      }
+    );
+});
+</code></pre>
+
+<p>Here, we see that we pass two functions, the first which will execute when we hover over, and the second which will execute when we hover off. In our hover on function, we hide the <code>#hide</code> element, which hides our <code>h2</code> tag using the function <code>hide()</code>. In our hover off function, we show the <code>#hide</code> element, which shows our <code>h2</code> tag using the function <code>show()</code>.</p>
+<p><a id="scroll"></a></p>
+<h3 id="34-scroll">3.4 Scroll</h3>
+<p>Maybe on our website we want to handle scroll events; if the reason scrolls past a certain point, for example, maybe they should be shown the toolbar anymore. We can handle this using our <code>scroll()</code> event. Let's change the title of the page to indicate that we have scrolled:</p>
+<p><strong>script.js</strong></p>
+<pre><code class="javascript">$(document).ready(function() {
+    // More code
+    $(document).scroll(function() {
+        $(&quot;title&quot;).text(&quot;SCROLLED&quot;);
+    });
+});
+</code></pre>
+
+<p>Here, we listen to the <code>document</code> element for the <code>scroll</code> event, and when we intercept the scroll event, we change the title of our page. This could be helpful to change the title of the page based on what section we have scrolled to.</p>
+<p><a id="keypress"></a></p>
+<h3 id="35-key-press">3.5 Key Press</h3>
+<p>A really awesome feature of a lot of different websites is the use of autocomplete search. Based on the characters that you have entered thus far, we can select new results to show you. This can be used using the jQuery <code>keypress</code> event. Here, we will write a program that shows the number of characters a user has typed:</p>
+<p><strong>index.html</strong></p>
+<pre><code class="html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Matt's Page&lt;/title&gt;
+        &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;input type=&quot;text&quot; id=&quot;autocomplete&quot;&gt;&lt;/input&gt;
+        &lt;p id=&quot;keys&quot;&gt;Keys Pressed: 0&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>script.js</strong></p>
+<pre><code class="javascript">$(document).ready(function() {
+    var keysPressed = 0;
+    $(&quot;#autocomplete&quot;).keypress(function() {
+      keysPressed++;
+      $(&quot;#keys&quot;).text(&quot;Keys Pressed: &quot; + keysPressed);
+    });
+});
+</code></pre>
+
+<p>Try it! Whenever we enter a new character, we'll see that the number of characters entered changes on our screen! It's like magic!</p>
+<p><a id="topics"></a></p>
+<h2 id="40-more-topics">4.0 More Topics</h2>
+<p>AJAX is a super useful method of making HTTP requests to internet forms and APIs without having to reload the page. We'll give a simple example of how to utilize it to make awesome pages.</p>
+<p><a id="whatajax"></a></p>
+<h3 id="41-ajax">4.1 AJAX</h3>
+<p>AJAX stands for "asynchronous JavaScript and XML." Essentially, it is a way for us to load data form a server without requiring a page reload. Say, for example, we have a website that shows the most up-to-date sports scores. To get new scores, we would have to make the request on the backend and reload the page each time. However, using jQuery, we could write some code to query for new results every 10 seconds, and update the screen without requiring the user to reload the page.</p>
+<p>You may be unfamiliar with the word "asynchronous." Basically it means that the placing of the request is done in the background, so our entire page doesn't have to wait on the retrieving of the data. Instead, we can simply give the request a function to execute upon its finishing; for example, once our request of our updated sports scores has completed, we can call a function to update our webpage with the updated scores. This is very similar to the concept of event delegation that we saw earlier.</p>
+<p>A GET request in AJAX using jQuery is as simple as:</p>
+<pre><code class="javascript">$.get(&quot;http://someapi.com&quot;, function(data) {
+  alert( &quot;Data Loaded: &quot; + data );
+});
+</code></pre>
+
+<p>Thus, if we have some API that we want to query, maybe Twitter or Facebook, we can query it through the front-end and immediately have the response to work with, all without having to reload the page.</p>
+<p><a id="effects"></a></p>
+<h3 id="42-effects">4.2 Effects</h3>
+<p>jQuery provides a library for adding effects to your webpage. Some of the most common animations are as follows:</p>
+<ul>
+<li><code>animate()</code> - animate a set of CSS properties</li>
+<li><code>fadeIn()</code> - fade to opaque on selected elements</li>
+<li><code>slideDown()</code>/<code>slideUp()</code> - display or hide certain elements with a sliding motion</li>
+<li><code>toggle()</code> - either display or hide a given element</li>
+</ul>
+<p>These effects can be super useful for lots of things on the web.</p>
+<p><a id="ui"></a></p>
+<h3 id="43-jquery-ui">4.3 jQuery UI</h3>
+<p>jQuery also provides a set of UI elements that are built on top of their traditional library. These include things like autocomplete search, progress bars, select menus, and accordions. More details relating to that can be found <a href="http://jqueryui.com/">here</a>.</p>
+<hr />
+<h2 id="additional-resources">Additional Resources</h2>
+<p>Along with this tutorial, there is a wealth of information available on JavaScript and jQuery all across the web. Below are some good places to start:</p>
+<p><a href="http://eloquentjavascript.net/">Eloquent Javascript</a></p>
+<p><a href="http://jqfundamentals.com/">jQuery Fundamentals</a></p>
+<p><a href="http://learn.jquery.com/">Learn jQuery</a></p>
+<p><a href="https://adicu.com/resources">ADI Resources</a></p>
+<p><a href="http://www.codecademy.com/">Codecademy</a></p>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-61110940-1', 'auto');
+      ga('send', 'pageview');
+</script>
+</script>
+</body></html>

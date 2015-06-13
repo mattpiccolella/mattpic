@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Matt Pic | Talks
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <ul class="collection">
+  {% for talk in talks %}
+    <li class="collection-item avatar">
+      <i class="mdi-editor-mode-comment circle"></i>
+      <span class="title">
+      {% if talk.name %}
+        <a href="/talks/{{ talk.name }}">{{ talk.title }}</a>
+      {% else %}
+        <a href="{{ talk.path }}">{{ talk.title }}</a>
+      {% endif %}
+      </span>
+      <p>{{ talk.subtitle }}</p>
+      <p>{{ talk.date }}</p>
+    </li>
+  {% endfor %}
+  </ul class="collection">
+</div>
+{% endblock %}

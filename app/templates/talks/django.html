@@ -1,0 +1,859 @@
+<html>
+    <!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+margin:1em 0;
+}
+img{
+max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><style>/* to allow side-by-side code blocks */
+.join {
+    height: 0;
+    margin: 0;
+}
+.join + pre {
+    width: 45%;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+pre + pre {
+    display: inline-block;
+    width: 45%;
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+pre + .clear {
+    margin: 0;
+    height: 0;
+    clear: both;
+}
+ul ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* make tables pretty */
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      border-bottom-width: 3px;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }</style><style>/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+pre code {
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff
+}
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+pre .title,
+pre .id,
+pre .coffeescript .params,
+pre .scss .preprocessor {
+  color: #900;
+  font-weight: bold
+}
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+pre .regexp {
+  color: #009926
+}
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+pre .deletion {
+  background: #fdd
+}
+pre .addition {
+  background: #dfd
+}
+pre .diff .change {
+  background: #0086b3
+}
+pre .chunk {
+  color: #aaa
+}</style><script>var hljs=new function(){function l(o){return o.replace(/&/gm,"&amp;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;")}function b(p){for(var o=p.firstChild;o;o=o.nextSibling){if(o.nodeName=="CODE"){return o}if(!(o.nodeType==3&&o.nodeValue.match(/\s+/))){break}}}function h(p,o){return Array.prototype.map.call(p.childNodes,function(q){if(q.nodeType==3){return o?q.nodeValue.replace(/\n/g,""):q.nodeValue}if(q.nodeName=="BR"){return"\n"}return h(q,o)}).join("")}function a(q){var p=(q.className+" "+q.parentNode.className).split(/\s+/);p=p.map(function(r){return r.replace(/^language-/,"")});for(var o=0;o<p.length;o++){if(e[p[o]]||p[o]=="no-highlight"){return p[o]}}}function c(q){var o=[];(function p(r,s){for(var t=r.firstChild;t;t=t.nextSibling){if(t.nodeType==3){s+=t.nodeValue.length}else{if(t.nodeName=="BR"){s+=1}else{if(t.nodeType==1){o.push({event:"start",offset:s,node:t});s=p(t,s);o.push({event:"stop",offset:s,node:t})}}}}return s})(q,0);return o}function j(x,v,w){var p=0;var y="";var r=[];function t(){if(x.length&&v.length){if(x[0].offset!=v[0].offset){return(x[0].offset<v[0].offset)?x:v}else{return v[0].event=="start"?x:v}}else{return x.length?x:v}}function s(A){function z(B){return" "+B.nodeName+'="'+l(B.value)+'"'}return"<"+A.nodeName+Array.prototype.map.call(A.attributes,z).join("")+">"}while(x.length||v.length){var u=t().splice(0,1)[0];y+=l(w.substr(p,u.offset-p));p=u.offset;if(u.event=="start"){y+=s(u.node);r.push(u.node)}else{if(u.event=="stop"){var o,q=r.length;do{q--;o=r[q];y+=("</"+o.nodeName.toLowerCase()+">")}while(o!=u.node);r.splice(q,1);while(q<r.length){y+=s(r[q]);q++}}}}return y+l(w.substr(p))}function f(q){function o(s,r){return RegExp(s,"m"+(q.cI?"i":"")+(r?"g":""))}function p(y,w){if(y.compiled){return}y.compiled=true;var s=[];if(y.k){var r={};function z(A,t){t.split(" ").forEach(function(B){var C=B.split("|");r[C[0]]=[A,C[1]?Number(C[1]):1];s.push(C[0])})}y.lR=o(y.l||hljs.IR,true);if(typeof y.k=="string"){z("keyword",y.k)}else{for(var x in y.k){if(!y.k.hasOwnProperty(x)){continue}z(x,y.k[x])}}y.k=r}if(w){if(y.bWK){y.b="\\b("+s.join("|")+")\\s"}y.bR=o(y.b?y.b:"\\B|\\b");if(!y.e&&!y.eW){y.e="\\B|\\b"}if(y.e){y.eR=o(y.e)}y.tE=y.e||"";if(y.eW&&w.tE){y.tE+=(y.e?"|":"")+w.tE}}if(y.i){y.iR=o(y.i)}if(y.r===undefined){y.r=1}if(!y.c){y.c=[]}for(var v=0;v<y.c.length;v++){if(y.c[v]=="self"){y.c[v]=y}p(y.c[v],y)}if(y.starts){p(y.starts,w)}var u=[];for(var v=0;v<y.c.length;v++){u.push(y.c[v].b)}if(y.tE){u.push(y.tE)}if(y.i){u.push(y.i)}y.t=u.length?o(u.join("|"),true):{exec:function(t){return null}}}p(q)}function d(D,E){function o(r,M){for(var L=0;L<M.c.length;L++){var K=M.c[L].bR.exec(r);if(K&&K.index==0){return M.c[L]}}}function s(K,r){if(K.e&&K.eR.test(r)){return K}if(K.eW){return s(K.parent,r)}}function t(r,K){return K.i&&K.iR.test(r)}function y(L,r){var K=F.cI?r[0].toLowerCase():r[0];return L.k.hasOwnProperty(K)&&L.k[K]}function G(){var K=l(w);if(!A.k){return K}var r="";var N=0;A.lR.lastIndex=0;var L=A.lR.exec(K);while(L){r+=K.substr(N,L.index-N);var M=y(A,L);if(M){v+=M[1];r+='<span class="'+M[0]+'">'+L[0]+"</span>"}else{r+=L[0]}N=A.lR.lastIndex;L=A.lR.exec(K)}return r+K.substr(N)}function z(){if(A.sL&&!e[A.sL]){return l(w)}var r=A.sL?d(A.sL,w):g(w);if(A.r>0){v+=r.keyword_count;B+=r.r}return'<span class="'+r.language+'">'+r.value+"</span>"}function J(){return A.sL!==undefined?z():G()}function I(L,r){var K=L.cN?'<span class="'+L.cN+'">':"";if(L.rB){x+=K;w=""}else{if(L.eB){x+=l(r)+K;w=""}else{x+=K;w=r}}A=Object.create(L,{parent:{value:A}});B+=L.r}function C(K,r){w+=K;if(r===undefined){x+=J();return 0}var L=o(r,A);if(L){x+=J();I(L,r);return L.rB?0:r.length}var M=s(A,r);if(M){if(!(M.rE||M.eE)){w+=r}x+=J();do{if(A.cN){x+="</span>"}A=A.parent}while(A!=M.parent);if(M.eE){x+=l(r)}w="";if(M.starts){I(M.starts,"")}return M.rE?0:r.length}if(t(r,A)){throw"Illegal"}w+=r;return r.length||1}var F=e[D];f(F);var A=F;var w="";var B=0;var v=0;var x="";try{var u,q,p=0;while(true){A.t.lastIndex=p;u=A.t.exec(E);if(!u){break}q=C(E.substr(p,u.index-p),u[0]);p=u.index+q}C(E.substr(p));return{r:B,keyword_count:v,value:x,language:D}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:l(E)}}else{throw H}}}function g(s){var o={keyword_count:0,r:0,value:l(s)};var q=o;for(var p in e){if(!e.hasOwnProperty(p)){continue}var r=d(p,s);r.language=p;if(r.keyword_count+r.r>q.keyword_count+q.r){q=r}if(r.keyword_count+r.r>o.keyword_count+o.r){q=o;o=r}}if(q.language){o.second_best=q}return o}function i(q,p,o){if(p){q=q.replace(/^((<[^>]+>|\t)+)/gm,function(r,v,u,t){return v.replace(/\t/g,p)})}if(o){q=q.replace(/\n/g,"<br>")}return q}function m(r,u,p){var v=h(r,p);var t=a(r);if(t=="no-highlight"){return}var w=t?d(t,v):g(v);t=w.language;var o=c(r);if(o.length){var q=document.createElement("pre");q.innerHTML=w.value;w.value=j(o,c(q),v)}w.value=i(w.value,u,p);var s=r.className;if(!s.match("(\\s|^)(language-)?"+t+"(\\s|$)")){s=s?(s+" "+t):t}r.innerHTML=w.value;r.className=s;r.result={language:t,kw:w.keyword_count,re:w.r};if(w.second_best){r.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function n(){if(n.called){return}n.called=true;Array.prototype.map.call(document.getElementsByTagName("pre"),b).filter(Boolean).forEach(function(o){m(o,hljs.tabReplace)})}function k(){window.addEventListener("DOMContentLoaded",n,false);window.addEventListener("load",n,false)}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=m;this.initHighlighting=n;this.initHighlightingOnLoad=k;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\[\\s\\S]",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(q,r){var o={};for(var p in q){o[p]=q[p]}if(r){for(var p in r){o[p]=r[p]}}return o}}();hljs.LANGUAGES.bash=function(a){var g="true false";var e="if then else elif fi for break continue while in do done echo exit return set declare";var c={cN:"variable",b:"\\$[a-zA-Z0-9_#]+"};var b={cN:"variable",b:"\\${([^}]|\\\\})+}"};var h={cN:"string",b:'"',e:'"',i:"\\n",c:[a.BE,c,b],r:0};var d={cN:"string",b:"'",e:"'",c:[{b:"''"}],r:0};var f={cN:"test_condition",b:"",e:"",c:[h,d,c,b],k:{literal:g},r:0};return{k:{keyword:e,literal:g},c:[{cN:"shebang",b:"(#!\\/bin\\/bash)|(#!\\/bin\\/sh)",r:10},c,b,a.HCM,h,d,a.inherit(f,{b:"\\[ ",e:" \\]",r:0}),a.inherit(f,{b:"\\[\\[ ",e:" \\]\\]"})]}}(hljs);hljs.LANGUAGES.cs=function(a){return{k:"abstract as base bool break byte case catch char checked class const continue decimal default delegate do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int interface internal is lock long namespace new null object operator out override params private protected public readonly ref return sbyte sealed short sizeof stackalloc static string struct switch this throw true try typeof uint ulong unchecked unsafe ushort using virtual volatile void while ascending descending from get group into join let orderby partial select set value var where yield",c:[{cN:"comment",b:"///",e:"$",rB:true,c:[{cN:"xmlDocTag",b:"///|<!--|-->"},{cN:"xmlDocTag",b:"</?",e:">"}]},a.CLCM,a.CBLCLM,{cN:"preprocessor",b:"#",e:"$",k:"if else elif endif define undef warning error line region endregion pragma checksum"},{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},a.ASM,a.QSM,a.CNM]}}(hljs);hljs.LANGUAGES.ruby=function(e){var a="[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?";var j="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?";var g={keyword:"and false then defined module in return redo if BEGIN retry end for true self when next until do begin unless END rescue nil else break undef not super class case require yield alias while ensure elsif or include"};var c={cN:"yardoctag",b:"@[A-Za-z]+"};var k=[{cN:"comment",b:"#",e:"$",c:[c]},{cN:"comment",b:"^\\=begin",e:"^\\=end",c:[c],r:10},{cN:"comment",b:"^__END__",e:"\\n$"}];var d={cN:"subst",b:"#\\{",e:"}",l:a,k:g};var i=[e.BE,d];var b=[{cN:"string",b:"'",e:"'",c:i,r:0},{cN:"string",b:'"',e:'"',c:i,r:0},{cN:"string",b:"%[qw]?\\(",e:"\\)",c:i},{cN:"string",b:"%[qw]?\\[",e:"\\]",c:i},{cN:"string",b:"%[qw]?{",e:"}",c:i},{cN:"string",b:"%[qw]?<",e:">",c:i,r:10},{cN:"string",b:"%[qw]?/",e:"/",c:i,r:10},{cN:"string",b:"%[qw]?%",e:"%",c:i,r:10},{cN:"string",b:"%[qw]?-",e:"-",c:i,r:10},{cN:"string",b:"%[qw]?\\|",e:"\\|",c:i,r:10}];var h={cN:"function",bWK:true,e:" |$|;",k:"def",c:[{cN:"title",b:j,l:a,k:g},{cN:"params",b:"\\(",e:"\\)",l:a,k:g}].concat(k)};var f=k.concat(b.concat([{cN:"class",bWK:true,e:"$|;",k:"class module",c:[{cN:"title",b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",r:0},{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+e.IR+"::)?"+e.IR}]}].concat(k)},h,{cN:"constant",b:"(::)?(\\b[A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:":",c:b.concat([{b:j}]),r:0},{cN:"symbol",b:a+":",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"number",b:"\\?\\w"},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},{b:"("+e.RSR+")\\s*",c:k.concat([{cN:"regexp",b:"/",e:"/[a-z]*",i:"\\n",c:[e.BE,d]}]),r:0}]));d.c=f;h.c[1].c=f;return{l:a,k:g,c:f}}(hljs);hljs.LANGUAGES.diff=function(a){return{c:[{cN:"chunk",b:"^\\@\\@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +\\@\\@$",r:10},{cN:"chunk",b:"^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*$",r:10},{cN:"chunk",b:"^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-$",r:10},{cN:"header",b:"Index: ",e:"$"},{cN:"header",b:"=====",e:"=====$"},{cN:"header",b:"^\\-\\-\\-",e:"$"},{cN:"header",b:"^\\*{3} ",e:"$"},{cN:"header",b:"^\\+\\+\\+",e:"$"},{cN:"header",b:"\\*{5}",e:"\\*{5}$"},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}}(hljs);hljs.LANGUAGES.javascript=function(a){return{k:{keyword:"in if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const",literal:"true false null undefined NaN Infinity"},c:[a.ASM,a.QSM,a.CLCM,a.CBLCLM,a.CNM,{b:"("+a.RSR+"|\\b(case|return|throw)\\b)\\s*",k:"return throw case",c:[a.CLCM,a.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",i:"\\n",c:[{b:"\\\\/"}]},{b:"<",e:">;",sL:"xml"}],r:0},{cN:"function",bWK:true,e:"{",k:"function",c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[a.CLCM,a.CBLCLM],i:"[\"'\\(]"}],i:"\\[|%"}]}}(hljs);hljs.LANGUAGES.css=function(a){var b={cN:"function",b:a.IR+"\\(",e:"\\)",c:[a.NM,a.ASM,a.QSM]};return{cI:true,i:"[=/|']",c:[a.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:"font-face page"},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:"import page media charset",c:[b,a.ASM,a.QSM,a.NM]},{cN:"tag",b:a.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[a.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[b,a.NM,a.QSM,a.ASM,a.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}(hljs);hljs.LANGUAGES.xml=function(a){var c="[A-Za-z0-9\\._:-]+";var b={eW:true,c:[{cN:"attribute",b:c,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style(?=\\s|>|$)",e:">",k:{title:"style"},c:[b],starts:{e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script(?=\\s|>|$)",e:">",k:{title:"script"},c:[b],starts:{e:"<\/script>",rE:true,sL:"javascript"}},{b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},b]}]}}(hljs);hljs.LANGUAGES.http=function(a){return{i:"\\S",c:[{cN:"status",b:"^HTTP/[0-9\\.]+",e:"$",c:[{cN:"number",b:"\\b\\d{3}\\b"}]},{cN:"request",b:"^[A-Z]+ (.*?) HTTP/[0-9\\.]+$",rB:true,e:"$",c:[{cN:"string",b:" ",e:" ",eB:true,eE:true}]},{cN:"attribute",b:"^\\w",e:": ",eE:true,i:"\\n|\\s|=",starts:{cN:"string",e:"$"}},{b:"\\n\\n",starts:{sL:"",eW:true}}]}}(hljs);hljs.LANGUAGES.java=function(a){return{k:"false synchronized int abstract float private char boolean static null if const for true while long throw strictfp finally protected import native final return void enum else break transient new catch instanceof byte super volatile case assert short package default double public try this switch continue throws",c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",c:[{cN:"javadoctag",b:"@[A-Za-z]+"}],r:10},a.CLCM,a.CBLCLM,a.ASM,a.QSM,{cN:"class",bWK:true,e:"{",k:"class interface",i:":",c:[{bWK:true,k:"extends implements",r:10},{cN:"title",b:a.UIR}]},a.CNM,{cN:"annotation",b:"@[A-Za-z]+"}]}}(hljs);hljs.LANGUAGES.php=function(a){var e={cN:"variable",b:"\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"};var b=[a.inherit(a.ASM,{i:null}),a.inherit(a.QSM,{i:null}),{cN:"string",b:'b"',e:'"',c:[a.BE]},{cN:"string",b:"b'",e:"'",c:[a.BE]}];var c=[a.BNM,a.CNM];var d={cN:"title",b:a.UIR};return{cI:true,k:"and include_once list abstract global private echo interface as static endswitch array null if endwhile or const for endforeach self var while isset public protected exit foreach throw elseif include __FILE__ empty require_once do xor return implements parent clone use __CLASS__ __LINE__ else break print eval new catch __METHOD__ case exception php_user_filter default die require __FUNCTION__ enddeclare final try this switch continue endfor endif declare unset true false namespace trait goto instanceof insteadof __DIR__ __NAMESPACE__ __halt_compiler",c:[a.CLCM,a.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+"}]},{cN:"comment",eB:true,b:"__halt_compiler.+?;",eW:true},{cN:"string",b:"<<<['\"]?\\w+['\"]?$",e:"^\\w+;",c:[a.BE]},{cN:"preprocessor",b:"<\\?php",r:10},{cN:"preprocessor",b:"\\?>"},e,{cN:"function",bWK:true,e:"{",k:"function",i:"\\$|\\[|%",c:[d,{cN:"params",b:"\\(",e:"\\)",c:["self",e,a.CBLCLM].concat(b).concat(c)}]},{cN:"class",bWK:true,e:"{",k:"class",i:"[:\\(\\$]",c:[{bWK:true,eW:true,k:"extends",c:[d]},d]},{b:"=>"}].concat(b).concat(c)}}(hljs);hljs.LANGUAGES.python=function(a){var f={cN:"prompt",b:"^(>>>|\\.\\.\\.) "};var c=[{cN:"string",b:"(u|b)?r?'''",e:"'''",c:[f],r:10},{cN:"string",b:'(u|b)?r?"""',e:'"""',c:[f],r:10},{cN:"string",b:"(u|r|ur)'",e:"'",c:[a.BE],r:10},{cN:"string",b:'(u|r|ur)"',e:'"',c:[a.BE],r:10},{cN:"string",b:"(b|br)'",e:"'",c:[a.BE]},{cN:"string",b:'(b|br)"',e:'"',c:[a.BE]}].concat([a.ASM,a.QSM]);var e={cN:"title",b:a.UIR};var d={cN:"params",b:"\\(",e:"\\)",c:["self",a.CNM,f].concat(c)};var b={bWK:true,e:":",i:"[${=;\\n]",c:[e,d],r:10};return{k:{keyword:"and elif is global as in if from raise for except finally print import pass return exec else break not with class assert yield try while continue del or def lambda nonlocal|10",built_in:"None True False Ellipsis NotImplemented"},i:"(</|->|\\?)",c:c.concat([f,a.HCM,a.inherit(b,{cN:"function",k:"def"}),a.inherit(b,{cN:"class",k:"class"}),a.CNM,{cN:"decorator",b:"@",e:"$"},{b:"\\b(print|exec)\\("}])}}(hljs);hljs.LANGUAGES.sql=function(a){return{cI:true,c:[{cN:"operator",b:"(begin|start|commit|rollback|savepoint|lock|alter|create|drop|rename|call|delete|do|handler|insert|load|replace|select|truncate|update|set|show|pragma|grant)\\b(?!:)",e:";",eW:true,k:{keyword:"all partial global month current_timestamp using go revoke smallint indicator end-exec disconnect zone with character assertion to add current_user usage input local alter match collate real then rollback get read timestamp session_user not integer bit unique day minute desc insert execute like ilike|2 level decimal drop continue isolation found where constraints domain right national some module transaction relative second connect escape close system_user for deferred section cast current sqlstate allocate intersect deallocate numeric public preserve full goto initially asc no key output collation group by union session both last language constraint column of space foreign deferrable prior connection unknown action commit view or first into float year primary cascaded except restrict set references names table outer open select size are rows from prepare distinct leading create only next inner authorization schema corresponding option declare precision immediate else timezone_minute external varying translation true case exception join hour default double scroll value cursor descriptor values dec fetch procedure delete and false int is describe char as at in varchar null trailing any absolute current_time end grant privileges when cross check write current_date pad begin temporary exec time update catalog user sql date on identity timezone_hour natural whenever interval work order cascade diagnostics nchar having left call do handler load replace truncate start lock show pragma exists number",aggregate:"count sum min max avg"},c:[{cN:"string",b:"'",e:"'",c:[a.BE,{b:"''"}],r:0},{cN:"string",b:'"',e:'"',c:[a.BE,{b:'""'}],r:0},{cN:"string",b:"`",e:"`",c:[a.BE]},a.CNM]},a.CBLCLM,{cN:"comment",b:"--",e:"$"}]}}(hljs);hljs.LANGUAGES.ini=function(a){return{cI:true,i:"[^\\s]",c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9\\[\\]_-]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:true,k:"on off true false yes no",c:[a.QSM,a.NM]}]}]}}(hljs);hljs.LANGUAGES.perl=function(e){var a="getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime readpipe do return format read sprintf dbmopen pop getpgrp not getpwnam rewinddir qqfileno qw endprotoent wait sethostent bless s|0 opendir continue each sleep endgrent shutdown dump chomp connect getsockname die socketpair close flock exists index shmgetsub for endpwent redo lstat msgctl setpgrp abs exit select print ref gethostbyaddr unshift fcntl syscall goto getnetbyaddr join gmtime symlink semget splice x|0 getpeername recv log setsockopt cos last reverse gethostbyname getgrnam study formline endhostent times chop length gethostent getnetent pack getprotoent getservbyname rand mkdir pos chmod y|0 substr endnetent printf next open msgsnd readdir use unlink getsockopt getpriority rindex wantarray hex system getservbyport endservent int chr untie rmdir prototype tell listen fork shmread ucfirst setprotoent else sysseek link getgrgid shmctl waitpid unpack getnetbyname reset chdir grep split require caller lcfirst until warn while values shift telldir getpwuid my getprotobynumber delete and sort uc defined srand accept package seekdir getprotobyname semop our rename seek if q|0 chroot sysread setpwent no crypt getc chown sqrt write setnetent setpriority foreach tie sin msgget map stat getlogin unless elsif truncate exec keys glob tied closedirioctl socket readlink eval xor readline binmode setservent eof ord bind alarm pipe atan2 getgrent exp time push setgrent gt lt or ne m|0 break given say state when";var d={cN:"subst",b:"[$@]\\{",e:"\\}",k:a,r:10};var b={cN:"variable",b:"\\$\\d"};var i={cN:"variable",b:"[\\$\\%\\@\\*](\\^\\w\\b|#\\w+(\\:\\:\\w+)*|[^\\s\\w{]|{\\w+}|\\w+(\\:\\:\\w*)*)"};var f=[e.BE,d,b,i];var h={b:"->",c:[{b:e.IR},{b:"{",e:"}"}]};var g={cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5};var c=[b,i,e.HCM,g,{cN:"comment",b:"^\\=\\w",e:"\\=cut",eW:true},h,{cN:"string",b:"q[qwxr]?\\s*\\(",e:"\\)",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\[",e:"\\]",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\{",e:"\\}",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\|",e:"\\|",c:f,r:5},{cN:"string",b:"q[qwxr]?\\s*\\<",e:"\\>",c:f,r:5},{cN:"string",b:"qw\\s+q",e:"q",c:f,r:5},{cN:"string",b:"'",e:"'",c:[e.BE],r:0},{cN:"string",b:'"',e:'"',c:f,r:0},{cN:"string",b:"`",e:"`",c:[e.BE]},{cN:"string",b:"{\\w+}",r:0},{cN:"string",b:"-?\\w+\\s*\\=\\>",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{b:"("+e.RSR+"|\\b(split|return|print|reverse|grep)\\b)\\s*",k:"split return print reverse grep",r:0,c:[e.HCM,g,{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[e.BE],r:0}]},{cN:"sub",bWK:true,e:"(\\s*\\(.*?\\))?[;{]",k:"sub",r:5},{cN:"operator",b:"-\\w\\b",r:0}];d.c=c;h.c[1].c=c;return{k:a,c:c}}(hljs);hljs.LANGUAGES.json=function(a){var e={literal:"true false null"};var d=[a.QSM,a.CNM];var c={cN:"value",e:",",eW:true,eE:true,c:d,k:e};var b={b:"{",e:"}",c:[{cN:"attribute",b:'\\s*"',e:'"\\s*:\\s*',eB:true,eE:true,c:[a.BE],i:"\\n",starts:c}],i:"\\S"};var f={b:"\\[",e:"\\]",c:[a.inherit(c,{cN:null})],i:"\\S"};d.splice(d.length,0,b,f);return{c:d,k:e,i:"\\S"}}(hljs);hljs.LANGUAGES.cpp=function(a){var b={keyword:"false int float while private char catch export virtual operator sizeof dynamic_cast|10 typedef const_cast|10 const struct for static_cast|10 union namespace unsigned long throw volatile static protected bool template mutable if public friend do return goto auto void enum else break new extern using true class asm case typeid short reinterpret_cast|10 default double register explicit signed typename try this switch continue wchar_t inline delete alignof char16_t char32_t constexpr decltype noexcept nullptr static_assert thread_local restrict _Bool complex",built_in:"std string cin cout cerr clog stringstream istringstream ostringstream auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set unordered_map unordered_multiset unordered_multimap array shared_ptr"};return{k:b,i:"</",c:[a.CLCM,a.CBLCLM,a.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},a.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:b,r:10,c:["self"]}]}}(hljs);
+</script><script>hljs.initHighlightingOnLoad();</script><title>Intro to Django</title></head>
+<body>
+<p><a id="top"></a></p>
+<h1 id="anintroductiontodjango">Building Web Apps with Django</h1>
+<p><em>Walking you through your first application in Django</em></p>
+<p>Written and developed by <a href="mailto:matthew@adicu.com">Matt Piccolella</a> and <a href="http://www.adicu.com">ADI</a>.</p>
+<p>Credit to <a href="http://www.djangobook.com/en/2.0/index.html">Django Book</a>.</p>
+<hr />
+<p><a id="getting-started"></a></p>
+<h2 id="gettingstarted">Getting Started</h2>
+<p>Before we begin, it is valuable to first understand what Django is exactly.</p>
+<h3 id="whatisdjango">What is Django?</h3>
+<p><a href="https://www.djangoproject.com">Django</a> is "a high-level Python Web framework that encourages rapid development and clean, pragmatic design." It includes awesome data modeling written entirely in Python, an automatic admin interface that allows you to manage content, customization of URLs, and a very powerful templating system. It is very similar to, yet much more robust than, Flask.</p>
+<h3 id="whatisdjangousedfor">What is Django used for?</h3>
+<p>Django is used primarily by complex, database-driven websites. It is used by such popular websites as Pinterest, Instagram, and the Washington Post.</p>
+<h3 id="howdoesdjangorelatetootheralternatives">How does Django relate to other alternatives?</h3>
+<p>Many of you have probably heard of Ruby on Rails. Django is very similar to Ruby on Rails, except it is written in Python. However, Django is generally used for applications that are more data-heavy and require better database support. Django is very similar to Flask in its templating and URL linking; however, Django is much more robust and offers much more functionality.</p>
+<hr />
+<p><a id="about-this-document"></a></p>
+<h2 id="usingthisdocument">Using this Document</h2>
+<p>This tutorial walks you through creating your first application in Django. It assumes that you have Python installed on your computer. If you do not have Python installed on your computer, [here][python] is where to install Python for your particular operating system.</p>
+<p>While you don't have to be an expert programmer to understand the content in this tutorial, it is tailored to someone who knows at least one programming language, preferrably Python. The code is not complicated that is featured in this tutorial, though, so someone new will probably be able to understand it.</p>
+<hr />
+<p><a id="table-of-contents"></a></p>
+<h2 id="tableofcontents">Table of Contents</h2>
+<ul>
+<li><a href="#install">0.0: Installing Django</a>
+<ul><li><a href="#mac">0.1: Mac</a></li>
+<li><a href="#windows">0.2: Windows</a></li></ul></li>
+<li><a href="#structure">1.0 The Structure of a Django Application</a>
+<ul><li><a href="#models_top">1.1 Models</a></li>
+<li><a href="#views_top">1.2 Views</a></li>
+<li><a href="#templates_top">1.3 Templates</a></li>
+<li><a href="#urls_top">1.4 URLs</a></li></ul></li>
+<li><a href="#starting">2.0 Starting our Application</a>
+<ul><li><a href="#creating">2.1 Creating a Project</a></li>
+<li><a href="#filestructure">2.2 File Structure</a></li>
+<li><a href="#server">2.3 Running the Server</a></li></ul></li>
+<li><a href="#views">3.0 Views, URLs, and Templates</a>
+<ul><li><a href="#helloworld">3.1 Hello World!</a></li>
+<li><a href="#urls">3.2 URL Patterns</a></li>
+<li><a href="#content">3.3 Dynamic Content</a></li>
+<li><a href="#templates">3.4 Templates</a></li>
+<li><a href="#loading">3.5 Loading Templates</a></li></ul></li>
+<li><a href="#models">4.0 Models</a>
+<ul><li><a href="#database">4.1 Configuring the Database</a></li>
+<li><a href="#app">4.2 Creating our First App</a></li>
+<li><a href="#access">4.3 Basic Data Access</a></li>
+<li><a href="#enable">4.4 Enabling Admin</a></li>
+<li><a href="#registering">4.5 Registering our Models</a></li></ul></li>
+<li><a href="#forms">5.0 Putting it all Together: Forms</a>
+<ul><li><a href="#html">5.1 Normal HTML Forms</a></li>
+<li><a href="#django_forms">5.2 Writing Django Forms</a></li>
+<li><a href="#user_template">5.3 Writing our Template</a></li>
+<li><a href="#ourapp">5.4 Our App</a></li></ul></li>
+</ul>
+<hr />
+<p><a id="install"></a></p>
+<h2 id="00installingdjango">0.0 Installing Django</h2>
+<p>While this talk does not require you to follow along, it will help to learn in the learning process. If you don't already have Django installed on your computer, here are some resources that will help in installing it.</p>
+<p><a id="mac"></a></p>
+<h3 id="01mac">0.1 Mac</h3>
+<p>If you already have Python and pip installed on your computer, simply type the following into Terminal:</p>
+<pre><code class=" bash">$ sudo pip install Django==1.6.2
+</code></pre>
+<p>This will, pending any other complications, install Django onto your computer. To check that it is properly installed, simply type and expect something like this for a successful installation:</p>
+<pre><code class=" bash">$ django-admin.py version
+1.6.2
+</code></pre>
+<p>If you do not have pip, you can download the <code>.tar</code> file <a href="https://www.djangoproject.com/download/" target="_blank">here</a> and follow the appropriate instructions. </p>
+<p>If Python is not installed, please first follow the instructions [here][python] before installing Django by either of the above methods.</p>
+<p><a id="windows"></a></p>
+<h3 id="02windows">0.2 Windows</h3>
+<p>While Django is often harder to install on Windows, it is still very simple and can be completed in just a few steps. After ensuring that Python is installed by visiting the above link, simply go to <a href="http://effbot.org/zone/django.htm" target="_blank">this simple tutorial</a> allows you to install Django on a windows machine in just a few minutes.</p>
+<p>It, however, requires the installation of <a href="http://sourceforge.net/projects/win32svn/" target="_blank">SVN</a> and [Exemaker][exe]. If you have any questions about installing these, both websites provide good documentation, or email <a href="mailto:matthew@adicu.com">me</a> with any questions.</p>
+<hr />
+<p><a id="structure"></a></p>
+<h2 id="10thestructureofadjangoapplication">1.0 The Structure of a Django Application</h2>
+<p>Many of you have probably heard of the <a href="http://www.codinghorror.com/blog/2008/05/understanding-model-view-controller.html" target="_blank">Model-View-Controller</a> framework in Software Development. Basically what it means is that the model is meant to represent, or "model", the data, the view is meant to visually represent the content, and the controller is meant to link the user and the interface.</p>
+<p>Django uses its own adaptation of this framework, known as the "Model-View-Template" framework. We will explain what each one of these means here.</p>
+<p><a id="models_top"></a></p>
+<h3 id="11models">1.1 Models</h3>
+<p>Models in Django represent data that is stored in a database. Things like Users, Documents, Locations (think nouns). We write models to "model" the data we want to store for later. These classes, written in Python, allow us to create, retrieve, update, and delete records from our database very easily. For those of you who have taken Java, think objects in Object-Oriented Programming.</p>
+<p><a id="views_top"></a></p>
+<h3 id="12views">1.2 Views</h3>
+<p>Views are generally the point that Django begins to stray from the MVC framework. In Django, rather than being a way to visually present content, views are used to provide the data to the visual template. In Python, we see these as functions that are called before a page is loaded. For example, if you were building a social media site that had a User Profile page, a function called something like <code>profile()</code> would exist that would be called whenever our User Profile page was loaded. The function would then be responsible for providing information like the user's name or profile picture to the page. In this way, we can see our view function as providing the data that a visual representation needs.</p>
+<p><a id="templates_top"></a></p>
+<h3 id="13templates">1.3 Templates</h3>
+<p>Templates, then, are the visual representations that we referred to in the last section. For our User Profile page, we would need a kind of "template" that would structure our data visually. We would need a basic page that could later be supplied with the user's name or how many friends they have. The template, then, is generic and can later be filled in with whatever data we pass it. In Django, the template, then, is a simply HTML page that is modified slightly to fit with the MVT model we are used.</p>
+<p><a id="urls_top"></a></p>
+<h3 id="14urls">1.4 URLs</h3>
+<p>Although they do not fall under the MVT framework we have been discussing, URLs are very important to Django. They essentially link URLs, as they are typed in to a search box on a browser, to a specific view function. For example, if my site were named <code>www.facetagram.com</code> and I wanted my users to see their profile when they went to <code>www.facetagram.com/profile</code>, I could specify that whenever a user visits that particular URL, my <code>profile()</code> view function would be called.</p>
+<hr />
+<p><a id="starting"></a></p>
+<h2 id="20startingourapplication">2.0 Starting our Application</h2>
+<p>To gain a better understanding of how these parts fit together, we will now begin our sample Django application. This application will be a simple implementation of a Twitter-like application. Users will be able to see a news feed on their homepage of "tweets" that other users have shared. By building this, we will be able to become much more familiar with each one of these parts and how they are implemented in our Python framework.</p>
+<p><a id="creating"></a></p>
+<h3 id="21creatingaproject">2.1 Creating a Project</h3>
+<p>Once you have Django installed, it is very simple to create a new project. Simply type the following into your command line:</p>
+<pre><code class=" bash">$ django-admin.py startproject myproject
+</code></pre>
+<p>The project name, in this case 'my-project', can be anything that you would like. Once you have run this command, Django will create a new directory for you. To enter that directory, type:</p>
+<pre><code class=" bash">$ cd myproject
+</code></pre>
+<p>or whatever you named your project. We now have our first Django project!
+<a id="filestructure"></a></p>
+<h3 id="22filestructure">2.2 File Structure</h3>
+<p>Here is a basic file structure for a Django project:</p>
+<pre><code>ProjectName/
+├── manage.py
+├── ProjectName/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+</code></pre>
+<p>By typing <code>ls</code> within your directory you should see these files.</p>
+<p>The <code>manage.py</code> in the main project directory file contains some utilities we will use later to sync our databases, to create new models, etc. You should never have to edit the file, though, so don't worry at all about it.</p>
+<p>If we move into our <code>myproject</code> sub-directory, we will see some more files:</p>
+<p><code>__init__.py</code> is an empty file that is required for Python to treat the directory as a package. You will generally not add anything to this file.</p>
+<p><code>settings.py</code> is one of the most important files in our entire project. It defines the configuration for our application, including information about our database, where we store our templates and other files, among many other things. </p>
+<p><code>urls.py</code> is the file that links our views to particular URLs for our web addresses.
+<a id="server"></a></p>
+<h3 id="23runningtheserver">2.3 Running the Server</h3>
+<p>Now that we understand the different parts of our Django application, we can run our application server. To do this, simply type the following:</p>
+<pre><code class=" bash">$ python manage.py runserver
+</code></pre>
+<p>Then, visit the link <code>127.0.0.1:8000/</code> in your browser, and if everything is working, you should see the "It Worked!" default page that Django provides for us.</p>
+<hr />
+<p><a id="views"></a></p>
+<h2 id="30viewsurlsandtemplates">3.0 Views, URLs, and Templates</h2>
+<p>Now that we have gotten Django up-and-running and you have an understanding of its different parts, let's start programming! 
+<a id="helloworld"></a></p>
+<h3 id="31helloworld">3.1 Hello World!</h3>
+<p>To start, we will get Django to show us a basic page that says "Hello World!". First, start by creating a new file in our project sub-directory, so that the new file structure works as follows:</p>
+<pre><code>ProjectName/
+├── manage.py
+├── ProjectName/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py    
+│   └── wsgi.py
+</code></pre>
+<p>Inside of this views function, type the following:</p>
+<pre><code class=" python">from django.http import HttpResponse
+def hello(request):
+    return HttpResponse("Hello World!")
+</code></pre>
+<p>The first thing we do is import the class HttpResponse, which is used to issue a response from the HttpRequest that is passed to us, named <code>request</code>. This is pretty simple to think about: each view takes a request from the server, to which it must give a response. In this case, our response is a simple string that says "Hello World!". </p>
+<p>Now that we have written our view, we have to link it to a particular URL, so that the users can access the page. So, open up yours <code>urls.py</code> file, which will look something like this:</p>
+<pre><code class=" python">from django.conf.urls import patterns, include, url
+# Uncomment the next two lines to enable the admin:
+# from django.contrib import admin
+# admin.autodiscover()
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'myproject.views.home', name='home'),
+    # url(r'^myproject/', include('myproject.foo.urls')),
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+)
+</code></pre>
+<p>You see that Django is very helpful in provided examples that are commented out. From this, we can easily recreate an example for our simple function: Add the following inside of the parentheses along with the other URLs, so that your new file looks like this:</p>
+<pre><code class=" python">from django.conf.urls import patterns, include, url
+# Uncomment the next two lines to enable the admin:
+# from django.contrib import admin
+# admin.autodiscover()
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'myproject.views.home', name='home'),
+    # url(r'^myproject/', include('myproject.foo.urls')),
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^hello/', 'myproject.views.hello', name='hello'),
+)
+</code></pre>
+<p>What is inside of these URL is called a regular expression. It is basically a way to match certain patterns in text, in this case the names of URLs. What we did in that last line that we added was specify that whenever someone goes to our website named followed by 'home/', the request will be redirected to the <code>hello</code> view, which we just wrote, which sites in the <code>myproject.views.hello</code> module, in this case. To make it easier, we could also import the entire <code>myproject.views</code> module, but by specifying the entire path, we gain a better understanding of how the file system is laid out.</p>
+<p>To see our new page, return to the directory in which <code>manage.py</code> sits, and run our command again:</p>
+<pre><code class=" bash">$ python manage.py runserver
+</code></pre>
+<p>If there are no errors, when you visit <code>http://127.0.0.1:8000/hello</code>, you should see the "Hello World!" page that we just created.
+<a id="urls"></a></p>
+<h3 id="32urlpatterns">3.2 URL Patterns</h3>
+<p>To give a better understanding of how we write our URL patterns, we must first understand how requests are processed in Django.</p>
+<p>In our <code>settings.py</code> file, we specify where our URLs file should be, which is by default in the <code>myproject.urls</code> file. When the Django server gets a request, it searches the <code>urls.py</code> file for a URL that matches the link that was typed in to the search box. Once the server finds a match, it sends its request to the view function associated with that URL, which then issues its own response. If you go to a URL we haven't specified, you will get an error.</p>
+<p>Now, let's begin to gain a better understanding of the regular expressions we used. In the URL that we wrote before:</p>
+<pre><code class=" python">url(r'^hello/', 'myproject.views.hello', name='hello')
+</code></pre>
+<p>the <code>r'^hello/</code> is the part that is known as a regular expression. The '^' character, in regular expressions, represents the start of the string we are inputting, in this case the part of the URL that follows the site name. More information about regular expressions can be seen <a href="http://www.webforefront.com/django/regexpdjangourls.html" target="_blank">here</a>. </p>
+<p>To add one more basic regular URL, let's add a URL to match our site root, in this case meaning <code>http://127.0.0.1:8000/</code>. To do this, add the following to the <code>urls.py</code> file:</p>
+<pre><code class=" python">url(r'^$', 'myproject.views.home', name='home',)
+</code></pre>
+<p>so that your final file looks something like:</p>
+<pre><code class=" python">from django.conf.urls import patterns, include, url
+# Uncomment the next two lines to enable the admin:
+# from django.contrib import admin
+# admin.autodiscover()
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'myproject.views.home', name='home'),
+    # url(r'^myproject/', include('myproject.foo.urls')),
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^hello/', 'myproject.views.hello', name='hello'),
+    url(r'^$', 'myproject.views.home', name='home'),
+)
+</code></pre>
+<p>In this, we used a dollar sign character, which is meant to simply to match the end of the string. The exact meaning is not important, however, as most of the expressions you will be writing will be quite simple.</p>
+<p><a id="content"></a></p>
+<h3 id="33dynamiccontent">3.3 Dynamic Content</h3>
+<p>In the previous line, we specified our the base URL of our site, <code>http://127.0.0.1:8000</code>, to point to a view function called <code>home()</code>. If we try to visit our URL now, we get an error because we haven't implemented our function yet. Let's implement it now, but with some dynamic content. </p>
+<p>The best part about Django is that it makes dynamic content simple to create. To show this, let's make a simple page that displays the current date and time.</p>
+<p>To start, go back to our <code>views.py</code> file and type the following:</p>
+<pre><code class=" python">from django.http import HttpResponse
+import datetime
+def hello(request):
+    return HttpResponse("Hello World!")
+def home(request):
+    now = datetime.datetime.now()
+    html = "&lt;html&gt;&lt;body&gt;It it now %s.&lt;/body&gt;&lt;/html&gt;" % now
+    return HttpResponse(html)
+</code></pre>
+<p>Thhere are a few things we must notice about the changes we have made. First, we imported <code>datetime</code>, which is a module in Python responsible for, you guessed it, providing the date and time. In our <code>home</code> function, we call a method called <code>now()</code> to store the current date and time into a variable. Next, we construct our response string. Notice this time, instead of simply returning a string, this time we return some HTML. This shows that <code>HttpResponse</code> can take any type of string. We add in the time to our page using the '%', and then return it. Now, start your server and go to your site, and check our new homepage. Refresh the page, and you will see it change. Pretty cool, right? You have just made your first dynamic webpage in Django!
+<a id="templates"></a></p>
+<h3 id="34templates">3.4 Templates</h3>
+<p>As you can probably imagine, once we get into large applications, it would be incredibly unrealistic to type all of our HTML into a simple string and return it. For this, we use templates! </p>
+<p>A template, in its most basic form, is an HTML page. However, they are much more than that. We can use templates to display variables, loop through information, make decisions using if's and else's, and much more. While this tutorial does not cover all of the functionality of Django templates, much more can be read about them <a href="https://docs.djangoproject.com/en/dev/topics/templates/" target="_blank">here</a>. </p>
+<p>Let's write an incredibly simple template for a page that will display a random number from 1 to 6, simulating a dice roll. Before we start, make sure you are in your base project directory (i.e. the one that contains <code>manage.py</code>). Create a new directory called <code>templates</code>, so your new file structure looks as follows:</p>
+<pre><code>ProjectName/
+├── manage.py
+├── ProjectName/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py    
+│   └── wsgi.py
+├── templates/
+</code></pre>
+<p>You can do this simply by typing:</p>
+<pre><code class=" bash">$ mkdir templates
+</code></pre>
+<p>Now, enter this directory using <code>cd</code> and create a new file called <code>home.html</code>, and type the code as follows:</p>
+<pre><code class=" html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Home&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;This is my first template!&lt;/h1&gt;
+        &lt;p&gt;Your random number is {{random}}&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>This is a simple HTML page, that includes a simple title and a header. The interesting part is enclosed in the paragraph tag. We see inside of a two pairs of curly braces a variable name called <code>random</code>. What this means is that our view will pass us a variable called 'random', which, when the page is loaded, will be placed where random is placed. </p>
+<p>Now that we have our template written, let's write our view:</p>
+<pre><code class=" python">from django.http import HttpResponse
+import random
+from django.shortcuts import render_to_response
+def hello(request):
+    return HttpResponse("Hello World!")
+def home(request):
+    rand = random.randint(1,6)
+    c = {}
+    c['random'] = rand
+    return render_to_response('home.html', c)
+</code></pre>
+<p>Notice we have replaced the code in our <code>home(request)</code> function. First, we imported random, a module used in Python used to generate random numbers. Next, we imported a function called <code>render_to_response</code> from a module called <code>django.shortcuts</code>. This function is very useful for rendering a template in python while being able to pass a dictionary of data to the template. </p>
+<p>In our <code>home(request)</code> function, we generate a random number from 1 to 6, and store it in a variable. We then instantiate an empty dictionary, which we call 'c'. We then add our random number to the dictionary using the key 'random'. Notice, this is the same variable name we used in our template. We then use our function to render our template by passing the template name, in this case 'home.html', along with our corresponding data dictionary. Once our template is rendered, our template will be able to access by name the data that we passed. That is why we used the name 'random'.</p>
+<p><a id="loading"></a></p>
+<h3 id="35loadingtemplates">3.5 Loading Templates</h3>
+<p>We are almost ready to see our new dynamic page. However, there is one more step. In the previous section, we created a directory called 'templates'. Also, inside of our <code>views.py</code> file, we specified our template as simply <code>home.html</code>. In order for Django to find this folder, we need to specify where we keep our templates. To do this, we must modify our <code>settings.py</code> file. In order to do this, open the file and scroll down to the part that says <code>TEMPLATE_DIRS</code> in all caps. Modify it to something like this:</p>
+<pre><code class=" python">TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/home/django/myproject/templates',
+)
+</code></pre>
+<p>In this part of the file, we simply specify the path to our template directory. Remember to use the absolute path; this is very important, as Django will not be able to find your templates otherwise. Do not worry about the other parts of the <code>settings.py</code> file for now; we will explain it in later sections.</p>
+<p>Now that we have added this to our file, save your changes to both your <code>home.html</code> and <code>views.py</code>, then start our server. Go to your site's homepage, and you should see your new page. Refresh a few times and you will see that the number changes. This is because a new number is being passed to our template each time we load the page.</p>
+<p>There are many other ways to render templates in Django; we simply chose <code>render_to_response</code> because it is simple and easy to explain. You can go to the official documentation on <a href="https://docs.djangoproject.com/en/dev/topics/templates/" target="_blank">templates</a> to learn some alternative ways render templates.</p>
+<hr />
+<p><a id="models"></a></p>
+<h2 id="40models">4.0 Models</h2>
+<p>Now that we know how to process data and pass it to our templates, let's work on making some data and storing that data so we can use it for later. For this, we use models.
+<a id="database"></a></p>
+<h3 id="41configuringthedatabase">4.1 Configuring the Database</h3>
+<p>Before we can create out model and start creating our application, we need to first configure our database to store the information we want it to. To do this, open up your <code>settings.py</code> file and edit the portion called <code>DATABASES</code>:</p>
+<pre><code class=" python">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.                                                    
+        'NAME': '',                      # Or path to database file if using sqlite3.                                                                    
+        # The following settings are not used with sqlite3:                                                                                              
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.                          
+        'PORT': '',                      # Set to empty string for default.                                                                              
+    }
+}
+</code></pre>
+<p>We see that Django comes with some default comments that help us to understand what we need to do to configure our database. For this simple application, we will use sqlite3, which is a SQL database that is stored locally in a file, rather than on its own server like MySQL. To configure, we simply add 'sqlite3' to the end of our <code>ENGINE</code> line and add the path on your computer to the location we want to store the database (normally in our project directory). We can call our file something like 'database.db'. Our finalized configuration should look something like this:</p>
+<pre><code class=" python">DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.                                                    
+        'NAME': '/Users/Matt/Desktop/django-tutorial/myproject/database.db',                      # Or path to database file if using sqlite3.                                                                    
+        # The following settings are not used with sqlite3:                                                                                              
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.                          
+        'PORT': '',                      # Set to empty string for default.                                                                              
+    }
+}
+</code></pre>
+<p><a id="app"></a></p>
+<h3 id="42creatingourfirstapp">4.2 Creating our First App</h3>
+<p>Now that our database settings are configured, let's start our application. To do this, type the following into your Terminal in the home directory of your project:</p>
+<pre><code class=" bash">$ python manage.py startapp sampletwitter
+</code></pre>
+<p>If we look at our project directory, we will see that we have a new directory called 'sampletwitter' with the following structure:</p>
+<pre><code>sampletwitter/
+├── __init__.py
+├── models.py
+├── tests.py
+├── views.py
+</code></pre>
+<p>We have explained what each of these files does already, except for <code>tests.py</code>, which is self-explanatory. In this tutorial, we will be only worrying about models.py; we can write our views in our previous <code>views.py</code> file and we won't need to worry about testing. Open your <code>models.py</code> file and you should see something like this:</p>
+<pre><code class=" python">from django.db import models
+# Create your models here. 
+</code></pre>
+<p>To start, let's add a model for an author. We are going to have authors for our tweets, so we should probably store those. Here, we create a model for 'author':</p>
+<pre><code class=" python">from django.db import models
+class Author(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+</code></pre>
+<p>This is about as simple a model as we will see; an author simply stores two strings, one for the first name and one for the last name. Now, let's add a model to represent a 'tweet:':</p>
+<pre><code class=" python">from django.db import models
+class Author(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+class Tweet(models.Model):
+    tweet = models.CharField(max_length=140)
+    author = models.ForeignKey(Author)
+</code></pre>
+<p>In this, we see it is very similar to the Author model, except for the inclusion of something called a foreign key. A foreign key is essentially a way to link a Tweet to an Author, in that a Tweet HAS-AN Author.</p>
+<p>Before we finish, we need to come up with a way to create new objects. For this, we use a class method called 'create':</p>
+<pre><code class=" python">from django.db import models
+class Author(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=40)
+    @classmethod
+    def create(cls, first_name, last_name):
+        author = cls(first_name=first_name,last_name=last_name)
+        return author
+class Tweet(models.Model):
+    tweet = models.CharField(max_length=140)
+    author = models.ForeignKey(Author)
+    @classmethod
+    def create(cls, tweet, author):
+        tweet = cls(tweet=tweet, author=author)
+        return tweet
+</code></pre>
+<p>This completes our <code>models.py</code> file. Now, before we sync our database to contain our new models, we just have to add our 'sampletwitter' app to the <code>INSTALLED_APPS</code> tuple in our <code>settings.py</code>:</p>
+<pre><code class=" python">INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:                                                                                                       
+    # 'django.contrib.admin',                                                                                                                            
+    # Uncomment the next line to enable admin documentation:                                                                                             
+    # 'django.contrib.admindocs', 
+    'sampletwitter',                                                                                                                       
+)
+</code></pre>
+<p>Once this file is saved, go into your Terminal and type the following command in your project directory:</p>
+<pre><code class=" bash">$ python manage.py syncdb
+</code></pre>
+<p>You will see Django will create lots of different tables for you. It will also ask you to create a user for the database. This is important! Doing this now will allow us to access our admin interface later.</p>
+<p><a id="access"></a></p>
+<h3 id="43basicdataaccess">4.3 Basic Data Access</h3>
+<p>To show a basic demonstration of how we will access this data, let's open up our Django shell by typing the following:</p>
+<pre><code class=" bash">$ python manage.py shell
+</code></pre>
+<p>Once you type this, you should see several carots appear. Let's now create our first model:</p>
+<pre><code class=" bash">&gt;&gt;&gt; from sampletwitter.models import Author, Tweet
+&gt;&gt;&gt; a1 = Author.create("Matt", "Piccolella")
+&gt;&gt;&gt; a1.save()
+&gt;&gt;&gt; authors = Author.objects.all()
+&gt;&gt;&gt; authors
+[&lt;Author: Author object&gt;]
+</code></pre>
+<p>First, we import the modules we need for our models. Then, we create our first author object, giving it a first and a last name. Then, we save it to the database using our <code>save()</code> function. Then, we query the database for all its authors by using the call to <code>Author.objects.all()</code>. We then print that object, which shows us a single author object, the one that we just created. This same thing can be </p>
+<p><a id="enable"></a></p>
+<h3 id="44enablingadmin">4.4 Enabling Admin</h3>
+<p>While we can see these objects from the Django shell, it would make more sense if we could see this pieces of information in a better interface. This is exactly what the Django admin interface is for! By taking a few simple steps, we can ensure that we can see all the information that we need to. </p>
+<p>First, go back to your <code>settings.py</code> file to our list of installed apps. Uncomment the two lines where instructured so our line looks as follows:</p>
+<pre><code class=" python">INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:                                                                                                       
+    'django.contrib.admin',                                                                                                                            
+    # Uncomment the next line to enable admin documentation:                                                                                             
+    'django.contrib.admindocs', 
+    'sampletwitter',                                                                                                                       
+)
+</code></pre>
+<p>Next, go to our <code>urls.py</code> file and uncomment the two lines at the top as well as the two lines at the bottom, as instructed, so our new file looks like this:</p>
+<pre><code class=" python ">from django.conf.urls import patterns, include, url
+# Uncomment the next two lines to enable the admin:                                                                                                      
+from django.contrib import admin
+admin.autodiscover()
+urlpatterns = patterns('',
+    # Examples:                                                                                                                                          
+    # url(r'^$', 'myproject.views.home', name='home'),                                                                                                   
+    # url(r'^myproject/', include('myproject.foo.urls')),                                                                                                
+    # Uncomment the admin/doc line below to enable admin documentation:                                                                                  
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the next line to enable the admin:                                                                                                       
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'myproject.views.home', name='home'),
+)
+</code></pre>
+<p>Once we make these changes, run our server again by typing from the project directory:</p>
+<pre><code class=" bash">$ python manage.py runserver
+</code></pre>
+<p>Now, visit <code>http://127.0.0.1:8000/admin</code>, and log in with the username you created earlier. Pretty awesome, right? From within here, we can view already created objects, we can create new objects, or even delete old objects. </p>
+<p>However, there's just one problem: we can't see our Author and Tweet object tables. For this, we need to make one correction.</p>
+<p><a id="registering"></a></p>
+<h3 id="45registeringourmodels">4.5 Registering our Models</h3>
+<p>To see our models on our Admin site, we simply have to register our models. We do this by creating a file called <code>admin.py</code> inside of our <code>sampletwitter</code> application. In this file, we type the following:</p>
+<pre><code class=" python">from django.contrib import admin
+from models import Author, Tweet
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name')
+    search_fields = ('first_name', 'last_name')
+class TweetAdmin(admin.ModelAdmin):
+    list_display = ('tweet', 'author')
+    search_fields = ('tweet',)
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Tweet, TweetAdmin)
+</code></pre>
+<p>First, we import the modules that we need. Then, we create new Admin objects for each of our two models. We do not need to do this, but it adds some functionality to our admin site, including the ability to be able to search our tables. Once we save this and run our server again, we will be able to see our app models registered in the site. Click on "Author" and you will see the Author object we created earlier.</p>
+<hr />
+<p><a id="forms"></a></p>
+<h2 id="50forms">5.0 Forms</h2>
+<p>One of the most important parts of web development is being able to get input from our users. Django provides a simple way for dealing with forms in a way that avoids writing the same code over and over again.</p>
+<p><a id="html"></a></p>
+<h3 id="51normalhtmlforms">5.1 Normal HTML Forms</h3>
+<p>In normal HTML, this is normally a pretty tedious task that consists of writing things like this over and over again:</p>
+<pre><code class=" html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Search&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action="/search/" method="get"&gt;
+            &lt;input type="text" name="q"&gt;
+            &lt;input type="submit" value="Search"&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>In Django, we can get these results in a view. Say we have the URL <code>/search/</code>, that we call on submit, hooked up to a view function called <code>search</code>:</p>
+<pre><code class=" python">def search(request):
+    if 'q' in request.GET:
+        message = "You searched for: %r" % request.GET['q']
+    else:
+        message = "You submitted an empty form."
+    return HttpResponse(message)
+</code></pre>
+<p>As you can see from this, <code>request.GET</code> is a dictionary that contains all of the information that is passed to us by 'GET' methods from within the HTML. If we have that, then we know the user submitted the form. If they didn't, then we know the form was an empty form.</p>
+<p>While this can be used to write basic forms, it is still very inefficient. There will be all sorts of error handling we will have to account for; for example, say there is a user registration form that has many fields. We want to be able to give particular error messages without having to customize this every time. For this, we can use Django Form classes.</p>
+<p><a id="django_forms"></a></p>
+<h3 id="52writingdjangoforms">5.2 Writing Django Forms</h3>
+<p>Inside of Django, there is a module called <code>django.forms</code> that allows for the functionality that we have been looking for: simple, easy-to-customize forms with automatic error handling and validation.</p>
+<p>To begin writing our first Django form, create a file in our project sub-directory (the same folder with <code>settings.py</code> in it) called <code>forms.py</code>. Inside of it, type the following code:</p>
+<pre><code class=" python">from django import forms
+class TweetForm(forms.Form):
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=40)
+    tweet = forms.CharField(max_length=140)
+</code></pre>
+<p>Once we have created this form, we can use it inside of our <code>views.py</code> folder to take care of the handling of tweets. Open up the <code>views.py</code> file and create a new function called <code>post_tweet</code> and add the code as follows:</p>
+<pre><code class=" python">from django.http import HttpResponse
+from django.shortcuts import render_to_response
+import random
+from forms import TweetForm
+from models import Author, Tweet
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def post_tweet(request):
+    c = {}
+    if request.method == 'POST':
+        form = TweetForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            first_name = cd['first_name']
+            last_name = cd['last_name']
+            tweet = cd['tweet']
+            current_authors = Author.objects.filter(first_name=first_name).filter(last_name=last_name)
+            if (len(current_authors) == 1):
+                author = current_authors[0]
+            else:
+                author = Author.create(first_name=first_name, last_name=last_name)
+                author.save()
+            tweet = Tweet.create(tweet=tweet,author=author)
+            tweet.save()
+            form = TweetForm()
+    else:
+        form = TweetForm()
+    c['form'] = form
+    tweets = Tweet.objects.all()
+    c['tweets'] = tweets
+    return render_to_response('tweets.html', c)
+</code></pre>
+<p>
+This is our longest and most complicated piece of code yet, so we will go through it piece by piece. First, we import the form and our two models from their respective folders. One thing to notice is our last import: csrf. CSRF stands for cross-site registry forgery. It basically means that people can forge their registry on your site, making it a security risk. Django normally requires measures to be taken to protect against this, which ensures the safety of a site. To get around this in our simple example, we simply use the csrf_exempt decorator for our function, which we import. </p>
+<p>Inside of our method, we first create a dictionary, in which we can store data that is to be returned to the template. First, we check if any data has been posted to our method. If it has been, we know we will have some processing to do. If it hasn't, we instead create a blank TweetForm that will be passed to our page. </p>
+<p>Once we know that data has been posted, we immediately store that form into a variable, which we do using the <code>request.POST</code> dictionary. We check if the form is valid first, meaning it passes all of the validations that we established in our <code>forms.py</code> file. If it has been, we create a dictionary to hold all the data that we got from the form, only cleaned. This prevents any malicious information that could've been passed to our form from hurting our website.</p>
+<p>Next, we take the first<em>name, the last</em>name, and the tweet objects from the form. Next, we search for <code>current_authors</code>. This means, using the data access tools we saw before, we check for all the Author objects currently defined in our database, filtering those only that have the same first<em>name and the same</em>last name as the ones we received from the form. The <code>current_authors</code> object is a list of objects from the database that matched our query. If there is an author object that currently exists in the database, meaning we saw a result from our query, we store that as author. Otherwise, if we need to create an object for a new Author, we do that using the <code>create</code> method we wrote earlier. We then set that equal to <code>author</code> and save it to the database. Once outside of that, we create a new tweet given the tweet itself and the author object, saving that to the database. If we have correctly processed all the information from our form, we can create a new blank one and pass it.</p>
+<p>Finally, once we have our form set, either as the invalid form that was passed or a new, blank one, we can then pass it back to the page by setting it to <code>form</code> in our dictionary. But first, we want to load all the tweets that are available currently, so we can display those on our page. Once we have passed these tweets, we can then render our template, called 'tweets.html'. </p>
+<p>This may be hard to understand at first, but as you work more and more in Django, you will see the incredible value of these forms.</p>
+<p><a id="user_template"></a></p>
+<h3 id="53writingourtemplate">5.3 Writing our Template</h3>
+<p>As you may have guessed, we still have to write our <code>tweets.html</code> template. Let's write that write now:</p>
+<pre><code class=" html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Tweets&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Send us a Tweet!&lt;/h1&gt;
+        {% if form.errors %}
+            &lt;p style="color: red;"&gt;Please error the error(s) below&lt;/p&gt;
+        {% endif %}
+        &lt;form action="/tweets/" method="post"&gt;
+            &lt;table&gt;
+                {{ form.as_table }}
+            &lt;/table&gt;
+            &lt;input type="submit" value="Submit"&gt;
+        &lt;/form&gt;
+        {% for tweet in tweets %}
+            &lt;h2&gt;Tweet from {{tweet.author.first_name}} {{tweet.author.last_name}}&lt;/h2&gt;
+            &lt;h3&gt;{{tweet.tweet}}&lt;/h3&gt;
+        {% endfor %}
+    &lt;/body&gt;
+&lt;/html&gt; 
+</code></pre>
+<p>The template is pretty simple. First, we display any errors that are accompanied by our form in the top part, coloring them red. We then create our form, giving it the <code>/tweets/</code> action, a URL we will specify inside of our URLs file momentarily. We display the form as a table by calling {{ form.as_table }}. </p>
+<p>We then create a submit input. Then, we cycle through all of our tweets using a simple for loop. We display the name of the author, which can be accessed through the tweet's author attribute. Then we display the content of the tweet. It is quite simple to do! We do not need to worry about specifying the different input types from the form or anything like that; Django does it for us!</p>
+<h3 id="ourapp">5.4 Our App</h3>
+<p>The last thing we need to do is a simple URL connection. We open up our <code>urls.py</code> file and add one more URL, to connect our <code>/tweets/</code> function to the <code>post_tweet</code> view that we wrote:</p>
+<pre><code class=" python">from django.conf.urls import patterns, include, url
+# Uncomment the next two lines to enable the admin:                                                                                                      
+from django.contrib import admin
+admin.autodiscover()
+urlpatterns = patterns('',
+    # Examples:                                                                                                                                          
+    # url(r'^$', 'myproject.views.home', name='home'),                                                                                                   
+    # url(r'^myproject/', include('myproject.foo.urls')),                                                                                                
+    # Uncomment the admin/doc line below to enable admin documentation:                                                                                  
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the next line to enable the admin:                                                                                                       
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'myproject.views.home', name='home'),
+    url(r'^tweets/', 'myproject.views.post_tweet', name='post_tweet'),
+)
+</code></pre>
+<p>Once this is complete, we can view our app! If we enter a name and a tweet and hit submit, we see it instantly appear on our "news feed" underneath the search box. Try leaving out one of the fields; Django automatically throws the error we need to! </p>
+<p>Congratulations! You have now finished your first app! Albeit a simple version of Twitter, this tutorial has shown you the power of Django and will hopefully inspire you to continue to learn.</p>
+<hr />
+<h2 id="additionalresources">Additional Resources</h2>
+<p>Perhaps one of the best parts of Django is its strong online resources. Here are some additional resources that will help in your future learning:</p>
+<p><a href="http://www.djangobook.com/en/2.0/index.html" target="_blank">The Django Book</a></p>
+<p><a href="https://www.djangoproject.com" target="_blank">Official Django Documentation</a></p>
+<p><a href="http://lightbird.net/dbe/" target="_blank">Django by Example</a></p>
+<p><a href="http://gettingstartedwithdjango.com" target="_blank">Getting Started with Django</a></p>
+<h2 id="sampleprojectcode">Sample Project Code</h2>
+<p>The entire code for the project seen here can be retrieved <a href="https://github.com/mjp2220/development-tutorials/tree/master/django-code" target="_blank">here</a>.</p>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-61110940-1', 'auto');
+      ga('send', 'pageview');
+</script>
+</body>
+</html>
