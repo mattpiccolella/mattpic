@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 app.config.from_object('config.app_config')
 
-from blog.controllers import blog as blog_module
-app.register_blueprint(blog_module)
+from projects.controllers import projects as projects_module
+app.register_blueprint(projects_module)
 
 from talks.controllers import talks as talks_module
 app.register_blueprint(talks_module)

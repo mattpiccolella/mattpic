@@ -1,2 +1,2 @@
-# mattpic
-My personal website and blog.
+# mattpic.com
+My personal website.
