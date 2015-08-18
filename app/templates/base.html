@@ -4,14 +4,16 @@
     {% block head %}
     {% block meta %}
     <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="description" content="Matt Piccolella is a student at Columbia University. He is interested in building awesome applications." />
     <meta name="author" content="Matt Piccolella">
     {% endblock %}
     <!-- Add all CSS -->
     {% block css %}
-    <link href="/static/css/main.css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,100,300,900' rel='stylesheet' type='text/css'>
     {% endblock css %}
     <!-- Google Analytics Tracking-->
     <script>
@@ -26,29 +28,7 @@
     {% endblock head %}
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper nav_background">
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/code">Code</a></li>
-          <li><a href="/blog">Writing</a></li>
-          <li><a href="/talks">Tech Talks</a></li>
-          <li><a href="/projects">Projects</a></li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="/code">Code</a></li>
-          <li><a href="/blog">Writing</a></li>
-          <li><a href="/talks">Tech Talks</a></li>
-          <li><a href="/projects">Projects</a></li>
-        </ul>
-      </div>
-    </nav>
     {% block body %}
     {% endblock body %}
-    {% block js %}
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="/static/js/materialize.js"></script>
-    <script src="/static/js/init.js"></script>
-    {% endblock %}
   </body>
 </html>
