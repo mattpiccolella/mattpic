@@ -1,10 +1,54 @@
 {
   "data": [
     {
-      "title" : "Sample Project",
-      "subtitle" : "Sample subtitle",
-      "date" : "4/29/2015",
-      "name" : "Sample Name"
+      "title" : "Around",
+      "description" : "Around is an iOS application that allows users to share and discover spontaneous events happening near them by uploading pictures and sharing their locations with people around them. The application will be launching in September 2015.",
+      "built" : "Built using Swift and Objective-C with <a href='http://sahirjaggi.github.io'>Sahir Jaggi</a>."
+    },
+    {
+      "title" : "Chrome.ai",
+      "description" : "Chrome.ai is a Chrome extension that brings voice control to any website. Using the wit.ai API, we built a tool that allows users to perform actions on any website while speaking what they are doing, allowing future users to perform those same actions simply by speaking their intent. The chrome extension was accompanied by an iOS app.",
+      "built" : "Built using <a href='https://github.com/mjp2220/Speakeasy-iOS/blob/master/SpeakEasyApp/ViewController.swift'>Swift</a> at <a href='http://greylocku.com/hackfest/'>Greylock Hackfest 2015</a>."
+    },
+    {
+      "title" : "Financial Data Analysis",
+      "description" : "As a freelance position in the Columbia Business School, I did data analysis of several large data sets relating to bond yields, value trading, and foreign bond investment. Tools used in the analysis included interactive line graphs, scatterplots, and maps that animate in time and can be filtered for several different variables",
+      "built" : "Built using <a href='https://github.com/mjp2220/financial-analysis/blob/master/portfolio-returns-final/linegraph.js'>D3.js</a> and <a href='https://github.com/mjp2220/financial-analysis/blob/master/chinese-provinces/china.json'>GeoJSON</a> for <a href='http://www.columbia.edu/~aa610/'>Professor Andrew Ang</a>.",
+      "link" : "http://www.columbia.edu/~mjp2220/financial-analysis/"
+    },
+    {
+      "title" : "NearBuy",
+      "description" : "NearBuy is an iOS application that lets you discover businesses and deals nearby just by pointing your smartphone. It helps everyday people find hidden treasures, and helps business owners attract customers with time and location-sensitive deals.",
+      "built" : "Built using <a href='https://github.com/danrschlosser/NearBuy/blob/master/ios/BattleOfTheHacks/BattleOfTheHacks/ViewController.swift'>Swift</a> at <a href='http://battleofthehacksv20.devpost.com/'>Battle of the Hacks v2.0</a>.",
+      "link" : "http://devpost.com/software/nearbuy-3ce9b"
+    },
+    {
+      "title" : "Stop and Frisk",
+      "description" : "As a part of a class project, I performed data analysis on data made available by New York City with regards to their (since eradicated) policy of Stop and Frisk. The data set provided information about conditions surrounding the stop, demographic information about the person being stopped, and findings from reprimanding officers. Using data science techniques including logistic regression and classification, we were able to find some interesting results.",
+      "built" : "Built using <a href='https://github.com/mjp2220/stop-and-frisk/blob/master/analysis/preliminary-stats.R'>R</a> and <a href='https://github.com/mjp2220/stop-and-frisk/blob/master/v11n/precinct-map.js'>D3.js</a> for <a href='http://modelingsocialdata.org/'>Modeling Social Data</a>.",
+      "link" : "http://www.columbia.edu/~mjp2220/stop-and-frisk/"
+    },
+    {
+      "title" : "TravelrsCheck",
+      "description" : "TravelrsCheck is an application that suggests travel destinations for you based on where you currency will do the strongest. Using Bloomberg historical currency data, the app uses statistical methods to determine how your currency is doing against another, and gives you places to travel that will give you increased buying power.",
+      "built" : "Built using <a href='https://github.com/mjp2220/currency-hop/blob/master/app/data/controllers.py'>Flask</a> and <a href='https://github.com/mjp2220/currency-hop/blob/master/app/static/js/base.js'>D3.js</a> at <a href='http://devfe.st'>DevFest 2015</a>.",
+      "link" : "http://devpost.com/software/travelrscheck"
+    },
+    {
+      "title" : "MusicAsleep",
+      "description" : "Music Asleep is an application that uses OpenCV and the EchoNest API to play music for you on Spotify based on how asleep you are, helping to keep drivers from falling asleep while on long drives",
+      "built" : "Built using <a href='https://github.com/mjp2220/MusicAsleep/blob/master/app/src/main/java/com/hackfest/greylock/musicasleep/MainActivity.java'>Android</a> at <a href='http://greylocku.com/hackfest/'>Greylock Hackfest 2014</a>."
+    },
+    {
+      "title" : "PlanMyNY",
+      "description" : "PlanMyNY is an application that adaptively plans your itinerary for a day out in New York City. Using the New York Times Events API, the Google Places and Maps API, and other data sources, PlanMyNY suggests restaurants, concerts, and other events in the city, all within a certain distance radius, so that you can spend an entire day in the city.",
+      "built" : "Built using <a href='https://github.com/mjp2220/devfest-app/blob/master/weekendplanner/views.py'>Django</a> at <a href='http://devfe.st'>DevFest 2014</a>."
+    },
+    {
+      "title" : "NimbleDroid",
+      "description" : "NimbleDroid is a software suite that optimizes Android applications to increase response times by up to 400% and decrease battery consumption by up to 20%. As an undergraduate research assistant for Professor Junfeng Yang, I built the first version of the Android and web clients as well as parts of the cloud infrastructure. I was also a member of the founding team that demonstrated the technology at CES 2014. The technology has since spun off into a company.",
+      "built" : "Built using Android and Python at <a href='http://systems.cs.columbia.edu/'>Columbia Software Systems Lab</a>.",
+      "link" : "https://www.nimbledroid.com/"
     }
   ]
 }

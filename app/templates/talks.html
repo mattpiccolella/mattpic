@@ -14,21 +14,18 @@ class="active"
 
 {% block content %}
 <div class="container">
-  <ul class="collection">
   {% for talk in talks %}
-    <li class="collection-item avatar">
-      <i class="mdi-editor-mode-comment circle"></i>
-      <span class="title">
-      {% if talk.name %}
-        <a href="/talks/{{ talk.name }}">{{ talk.title }}</a>
-      {% else %}
-        <a href="{{ talk.path }}">{{ talk.title }}</a>
-      {% endif %}
-      </span>
+  <div class="talk">
+    {% if talk.name %}
+    <a class="title" href="/talks/{{ talk.name }}">
+    {% else %}
+    <a class="title" href="{{ talk.path }}">
+    {% endif %}
+      <span class="title">{{ talk.title }}</span>
       <p>{{ talk.subtitle }}</p>
       <p>{{ talk.date }}</p>
-    </li>
+    </a>
+  </div>
   {% endfor %}
-  </ul>
 </div>
 {% endblock %}

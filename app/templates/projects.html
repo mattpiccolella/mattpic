@@ -14,6 +14,16 @@ class="active"
 
 {% block content %}
 <div class="container">
-  <h1>Projects</h1>
+  {% for project in projects %}
+  <div class="talk">
+    {% if project.link %}
+    <a class="title" href="{{project.link}}"><span class="title">{{ project.title }}</span></a>
+    {% else %}
+    <span class="title">{{ project.title }}</span>
+    {% endif %}
+    <p>{{ project.description }}</p>
+    <p>{{ project.built|safe }}</p>
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}
