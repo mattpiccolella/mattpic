@@ -9,7 +9,6 @@ FILE_NAME = 'projects.json'
 @projects.route('/')
 def list():
   projects = load_projects()
-  print projects['data']
   return render_template('projects.html', projects=projects['data'])
 
 @projects.route('/<name>')

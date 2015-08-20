@@ -1,0 +1,20 @@
+{% extends "content.html" %}
+
+{% block title %}
+Matt Pic | About
+{% endblock %}
+
+{% block title_text %}
+About
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="talk">
+    <span class="about">Hi, I'm Matt.</span>
+    {% for fact in about %}
+    <p class="about">{{ fact|safe }}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

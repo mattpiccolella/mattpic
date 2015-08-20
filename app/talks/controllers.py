@@ -9,7 +9,6 @@ FILE_NAME = 'talks.json'
 @talks.route('/')
 def list():
   talks = load_talks()
-  print talks['data']
   return render_template('talks.html', talks=talks['data'])
 
 @talks.route("/adi-award")
