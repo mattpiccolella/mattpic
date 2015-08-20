@@ -24,7 +24,7 @@
     },
     {
       "title" : "Stop and Frisk",
-      "description" : "As a part of a class project, I performed data analysis on data made available by New York City with regards to their (since eradicated) policy of Stop and Frisk. The data set provided information about conditions surrounding the stop, demographic information about the person being stopped, and findings from reprimanding officers. Using data science techniques including logistic regression and classification, we were able to find some interesting results.",
+      "description" : "As a part of a class project, I performed data analysis on data made available by New York City about their (since eradicated) policy of Stop and Frisk. The data set provided information about conditions surrounding the stop, demographic information about the person being stopped, and findings from reprimanding officers. Using data science techniques including logistic regression and classification, we were able to find some interesting results.",
       "built" : "Built using <a href='https://github.com/mjp2220/stop-and-frisk/blob/master/analysis/preliminary-stats.R'>R</a> and <a href='https://github.com/mjp2220/stop-and-frisk/blob/master/v11n/precinct-map.js'>D3.js</a> for <a href='http://modelingsocialdata.org/'>Modeling Social Data</a>.",
       "link" : "http://www.columbia.edu/~mjp2220/stop-and-frisk/"
     },
@@ -36,7 +36,7 @@
     },
     {
       "title" : "MusicAsleep",
-      "description" : "Music Asleep is an application that uses OpenCV and the EchoNest API to play music for you on Spotify based on how asleep you are, helping to keep drivers from falling asleep while on long drives",
+      "description" : "Music Asleep is an application that uses OpenCV and the EchoNest API to play music for you on Spotify based on how asleep you are, helping to keep drivers from falling asleep while on long drives.",
       "built" : "Built using <a href='https://github.com/mjp2220/MusicAsleep/blob/master/app/src/main/java/com/hackfest/greylock/musicasleep/MainActivity.java'>Android</a> at <a href='http://greylocku.com/hackfest/'>Greylock Hackfest 2014</a>."
     },
     {
