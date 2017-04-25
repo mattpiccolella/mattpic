@@ -12,6 +12,9 @@ app.register_blueprint(projects_module)
 from talks.controllers import talks as talks_module
 app.register_blueprint(talks_module)
 
+from matt_bot.controllers import mattbot as mattbot_module
+app.register_blueprint(mattbot_module)
+
 ABOUT_FILE_NAME = "static/about.json"
 
 # Prepare our assets
